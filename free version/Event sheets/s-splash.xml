@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>s-splash</name>
+    <events>
+        <variable comment="Музыка в меню, если 1 то уже играет" constant="0" name="MainMusic" sid="8484660173050066" static="0" type="number">0</variable>
+        <event-block sid="2860217729814435">
+            <conditions>
+                <condition id="-25" name="On loader layout complete" sid="5272108222115164" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Track View" sid="7467374204832808" type="GoogleAnalyticsWrapper">
+                    <param id="0" name="Screen">&quot;SplashScreen&quot;</param>
+                </action>
+                <action id="1" name="Track Event" sid="227998381131340" type="GoogleAnalyticsWrapper">
+                    <param id="0" name="Category">&quot;Screens&quot;</param>
+                    <param id="1" name="Action">&quot;Start Game&quot;</param>
+                    <param id="2" name="Label">&quot;GLOBAL&quot;</param>
+                    <param id="3" name="Value">0</param>
+                </action>
+            </actions>
+            <sub-events>
+                <comment>если язык установлен то идем сразу в главное меню</comment>
+                <event-block sid="236270170477697">
+                    <conditions>
+                        <condition id="3" name="Local key exists" sid="3562016119306465" type="WebStorage">
+                            <param id="0" name="Key">&quot;lang_locale&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="4485880323549928" type="System">
+                            <param id="0" name="Layout">mainMenu</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Иначе на экран выбора языка</comment>
+                <event-block sid="8275981899510737">
+                    <conditions>
+                        <condition id="3" inverted="1" name="Local key exists" sid="2115661599821939" type="WebStorage">
+                            <param id="0" name="Key">&quot;lang_locale&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="8647157958589572" type="System">
+                            <param id="0" name="Layout">language</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="192383599922503">
+                    <conditions>
+                        <condition id="3" inverted="1" name="Local key exists" sid="3573604487680091" type="WebStorage">
+                            <param id="0" name="Key">&quot;XMAS_COUNT_SAVE&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="9199384365287834" type="WebStorage">
+                            <param id="0" name="Key">&quot;XMAS_COUNT_SAVE&quot;</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="550907197483673">
+                    <conditions>
+                        <condition id="3" inverted="1" name="Local key exists" sid="583208377119139" type="WebStorage">
+                            <param id="0" name="Key">&quot;IAP_LOCAL_PRICE&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="969046655861922" type="WebStorage">
+                            <param id="0" name="Key">&quot;IAP_LOCAL_PRICE&quot;</param>
+                            <param id="1" name="Value">&quot;USD 9.99&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="915762839680887">
+                    <conditions>
+                        <condition id="3" inverted="1" name="Local key exists" sid="233056331757459" type="WebStorage">
+                            <param id="0" name="Key">&quot;IAP_PREMIUM&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="590882328617475" type="WebStorage">
+                            <param id="0" name="Key">&quot;IAP_PREMIUM&quot;</param>
+                            <param id="1" name="Value">&quot;No&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="810919634615986">
+                    <conditions>
+                        <condition id="0" name="Is Canvas+" sid="116418402125891" type="CocoonCanvasplus" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block any="1" sid="128194224581369">
+                            <conditions>
+                                <condition id="6" inverted="1" name="Compare key value (as text)" sid="112472669344925" type="WebStorage">
+                                    <param id="0" name="Key">&quot;IAP_PREMIUM&quot;</param>
+                                    <param id="1" name="Text to compare">&quot;Yes&quot;</param>
+                                    <param id="2" name="Case sensitivity">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Preload banner ad" sid="799244670068905" type="CordovaAdMob" />
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>

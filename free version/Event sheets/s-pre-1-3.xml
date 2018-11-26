@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>s-pre-1-3</name>
+    <events>
+        <include>s-pre-gen</include>
+        <comment>Вызываем функцию с общими настройками старта предуровня. Затем настройки группу конктно запускаемого уровня и затем переменные для конкретного уровня</comment>
+        <event-block sid="5690088841026686">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="3603539299590021" type="System" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="7154056915855292">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="9435699324735054" type="System">
+                            <param id="0" name="First value">WindowWidth/WindowHeight</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Second value">1.5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="9" name="Set scale" sid="8417352453377322" type="pre_1_3">
+                            <param id="0" name="Scale">0.7</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="401453658880716">
+                    <conditions />
+                    <actions>
+                        <action id="0" name="Call function" sid="2366737382337565" type="Function">
+                            <param id="0" name="Name">&quot;pre-start&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                        <action id="-9" name="Set value" sid="1359010035115166" type="System">
+                            <param id="0" name="Variable">giftCount</param>
+                            <param id="1" name="Value">3</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="6449651459445526" type="System">
+                            <param id="0" name="Variable">sublevel</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="8540727528553837" type="System">
+                            <param id="0" name="Group name">&quot;Local_Molly_1_3&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="400953514338111" type="System">
+                            <param id="0" name="Group name">&quot;Init_1_3&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4241214925289811" type="System">
+                            <param id="0" name="Group name">&quot;Start-1-3&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4397349670043293" type="System">
+                            <param id="0" name="Group name">&quot;GunsGoat_1_3&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="1234749698670868" type="System">
+                            <param id="0" name="Group name">&quot;Camera_1_3_Start&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="3618689117674981" type="System">
+                            <param id="0" name="Group name">&quot;MovementMeater_1_3&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4853119572232721" type="System">
+                            <param id="0" name="Group name">&quot;marker_position_meater&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="3358255502997193" type="System">
+                            <param id="0" name="Group name">&quot;Bush_1_3&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4616024363313827" type="System">
+                            <param id="0" name="Group name">&quot;button_bush_1_3&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="7362214951768309" type="System">
+                            <param id="0" name="Group name">&quot;Molly_sneaks&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="8430384956897222" type="System">
+                            <param id="0" name="Group name">&quot;caught&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="8501040657028541" type="System">
+                            <param id="0" name="Group name">&quot;Safe&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="6106847406342638" type="System">
+                            <param id="0" name="Group name">&quot;Safe_Open&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="7320230710949131" type="System">
+                            <param id="0" name="Group name">&quot;SafeRotate&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="2119753142505251" type="System">
+                            <param id="0" name="Group name">&quot;Safe_Banana&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="1118783661393003" type="System">
+                            <param id="0" name="Group name">&quot;Key_1_3&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="6814105780155444" type="System">
+                            <param id="0" name="Group name">&quot;take_key&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="8690460384212005" type="System">
+                            <param id="0" name="Group name">&quot;open_door&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="7835456452791944" type="System">
+                            <param id="0" name="Group name">&quot;Bird_1_3&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="9445472764183636" type="System">
+                            <param id="0" name="Group name">&quot;spawn_egg&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="3303390793539347" type="System">
+                            <param id="0" name="Group name">&quot;Take_egg_1_3&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="620922665019552" type="System">
+                            <param id="0" name="Group name">&quot;Map&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="8941893927635998" type="System">
+                            <param id="0" name="Group name">&quot;UpNDown_1_3&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="956343296459546" type="System">
+                            <param id="0" name="Group name">&quot;Teleport_1_3&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="3024317053895213" type="System">
+                            <param id="0" name="Group name">&quot;UpPort_1_3&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="2557017513179574" type="System">
+                            <param id="0" name="Group name">&quot;DownPort_1_3&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="6989077834614394" type="System">
+                            <param id="0" name="Group name">&quot;Stairs_1_3&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4017754282100155" type="System">
+                            <param id="0" name="Group name">&quot;UP_stair_1_3&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="3853692951795599" type="System">
+                            <param id="0" name="Group name">&quot;DOWN_stair_1_3&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="8610492556835135" type="System">
+                            <param id="0" name="Group name">&quot;ToLever_1_3&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="3121734672643319" type="System">
+                            <param id="0" name="Group name">&quot;up_wall&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="5673128280272678" type="System">
+                            <param id="0" name="Group name">&quot;down_wall&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="8658190027037488" type="System">
+                            <param id="0" name="Group name">&quot;jumps down&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="1619555959577873" type="System">
+                            <param id="0" name="Group name">&quot;Guard&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="6186362902941872" type="System">
+                            <param id="0" name="Group name">&quot;girl_1_3&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="6812672647193468" type="System">
+                            <param id="0" name="Group name">&quot;Lever_1_3&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="9119879372804516" type="System">
+                            <param id="0" name="Group name">&quot;Camera_1_3_Gate&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="1768534972242151" type="System">
+                            <param id="0" name="Group name">&quot;Wolf_1_3&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="5222168929316955" type="System">
+                            <param id="0" name="Group name">&quot;Camera_1_3_Wolf&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="9317848473015184" type="System">
+                            <param id="0" name="Group name">&quot;Exit-1-3&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="384680455295295" type="System">
+                            <param id="0" name="Group name">&quot;Sine&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4803784867137133" type="System">
+                            <param id="0" name="Group name">&quot;Ender_1_3&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="809913235902328" type="System">
+                            <param id="0" name="Group name">&quot;Music-1-3&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="6996205197840999" type="System">
+                            <param id="0" name="Group name">&quot;flawor_1_3&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="7188991063956041" type="System">
+                            <param id="0" name="Group name">&quot;flawor_1_3v2&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="5930096325091373" type="System">
+                            <param id="0" name="Group name">&quot;Restart_1_3&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="9845503832311449" type="System">
+                            <param id="0" name="Group name">&quot;Guide_Book_1_3&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="8437843645591395">
+                    <conditions>
+                        <condition id="6" name="Compare key value (as text)" sid="2328788222176237" type="WebStorage">
+                            <param id="0" name="Key">&quot;level_1_3&quot;</param>
+                            <param id="1" name="Text to compare">&quot;null_bum&quot;</param>
+                            <param id="2" name="Case sensitivity">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="2860280913629603" type="WebStorage">
+                            <param id="0" name="Key">&quot;level_1_3&quot;</param>
+                            <param id="1" name="Value">&quot;null&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="278262058157790">
+                    <conditions>
+                        <condition id="0" name="Is Canvas+" sid="993811720156841" type="CocoonCanvasplus" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="316800286847745">
+                            <conditions>
+                                <condition id="6" name="Is showing banner ad" sid="575500447014327" type="CordovaAdMob" />
+                            </conditions>
+                            <actions>
+                                <action id="3" name="Hide banner ad" sid="692784359296887" type="CordovaAdMob" />
+                            </actions>
+                        </event-block>
+                        <event-block any="1" sid="901520052158209">
+                            <conditions>
+                                <condition id="6" inverted="1" name="Compare key value (as text)" sid="795874749761256" type="WebStorage">
+                                    <param id="0" name="Key">&quot;IAP_PREMIUM&quot;</param>
+                                    <param id="1" name="Text to compare">&quot;Yes&quot;</param>
+                                    <param id="2" name="Case sensitivity">0</param>
+                                </condition>
+                                <condition id="3" inverted="1" name="Local key exists" sid="981883484835730" type="WebStorage">
+                                    <param id="0" name="Key">&quot;IAP_PREMIUM&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="842971114787566">
+                                    <conditions>
+                                        <condition id="6" inverted="1" name="Is showing banner ad" sid="320947912997292" type="CordovaAdMob" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-16" name="Wait" sid="836220275789251" type="System">
+                                            <param id="0" name="Seconds">0.3</param>
+                                        </action>
+                                        <action id="1" name="Show banner ad" sid="580835672051777" type="CordovaAdMob">
+                                            <param id="0" name="Position">1</param>
+                                            <param id="1" name="Size">6</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="153819972372324">
+                                    <conditions>
+                                        <condition id="9" inverted="1" name="Is showing video ad" sid="553340543031761" type="CordovaUnityAds" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Show video ad" sid="746373950152681" type="CordovaUnityAds" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>При нажатии на кнопку плей запускаем стандартный сценарий через функцию а затем уже уникальное название уровня для загрузки</comment>
+        <event-block sid="8631741971172737">
+            <conditions>
+                <condition id="3" name="On touched object" sid="7344230482128505" type="Touch">
+                    <param id="0" name="Object">playPreload</param>
+                </condition>
+                <condition id="3" name="Compare frame" sid="4477088127285031" type="playPreload">
+                    <param id="0" name="Comparison">0</param>
+                    <param id="1" name="Number">0</param>
+                </condition>
+                <condition id="9" inverted="1" name="Is showing video ad" sid="403457510674419" type="CordovaUnityAds" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="1111614045165793" type="Function">
+                    <param id="0" name="Name">&quot;tap-start&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="787162055530771">
+                    <conditions>
+                        <condition id="6" name="Is showing banner ad" sid="353620880120990" type="CordovaAdMob" />
+                    </conditions>
+                    <actions>
+                        <action id="3" name="Hide banner ad" sid="878841519177872" type="CordovaAdMob" />
+                    </actions>
+                </event-block>
+                <event-block sid="834349301700383">
+                    <conditions />
+                    <actions>
+                        <action id="-16" name="Wait" sid="2822417715856861" type="System">
+                            <param id="0" name="Seconds">0.2</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="1022071285093291" type="System">
+                            <param id="0" name="Layout">level-1-3</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>

@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>s-pre-gen</name>
+    <events>
+        <event-block sid="6497338945058888">
+            <conditions>
+                <condition id="0" name="On function" sid="4211002780641985" type="Function">
+                    <param id="0" name="Name">&quot;pre-start&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="37" name="Unload all audio" sid="399294625541002" type="Audio" />
+                <action id="100" name="Create local camera" sid="642915354160794" type="MagiCam">
+                    <param id="0" name="Name">&quot;camera&quot;</param>
+                    <param id="1" name="X">0</param>
+                    <param id="2" name="Y">0</param>
+                    <param id="3" name="Scale">1</param>
+                    <param id="4" name="Active">1</param>
+                </action>
+                <action id="9" name="Set scale" sid="979707718477138" type="playPreload">
+                    <param id="0" name="Scale">0.86</param>
+                </action>
+                <action id="-9" name="Set value" sid="3255894560183126" type="System">
+                    <param id="0" name="Variable">TouchLastX</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="867475660703725" type="System">
+                    <param id="0" name="Variable">TouchLastY</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="6043924992848557" type="System">
+                    <param id="0" name="Variable">TouchPanID</param>
+                    <param id="1" name="Value">-1</param>
+                </action>
+                <action id="-9" name="Set value" sid="1362365220968294" type="System">
+                    <param id="0" name="Variable">BlockCAM</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="831372723382247" type="System">
+                    <param id="0" name="Variable">LastMagiCamX</param>
+                    <param id="1" name="Value">568</param>
+                </action>
+                <action id="-9" name="Set value" sid="157918767148970" type="System">
+                    <param id="0" name="Variable">LastMagiCamY</param>
+                    <param id="1" name="Value">320</param>
+                </action>
+                <action id="33" name="Stop all" sid="5231831521110216" type="Audio" />
+                <action id="-9" name="Set value" sid="9297263983563119" type="System">
+                    <param id="0" name="Variable">ViewBuyWindow</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-12" name="Set group active" sid="5178551682819682" type="System">
+                    <param id="0" name="Group name">&quot;StartGeneral&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="6762156855482125" type="System">
+                    <param id="0" name="Variable">Patty_Count</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="2764848510796184" type="System">
+                    <param id="0" name="Variable">Patty_BLOCK</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="3727473795686612" type="System">
+                    <param id="0" name="Variable">pause</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="8844731062675622" type="System">
+                    <param id="0" name="Variable">restart_level</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="1775440794638809" type="System">
+                    <param id="0" name="Variable">Dead</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="5148593769981957" type="System">
+                    <param id="0" name="Variable">starBase</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="1358208783935082" type="System">
+                    <param id="0" name="Variable">starGift</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="378562108453582" type="System">
+                    <param id="0" name="Variable">starWolf</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="4027536686349848" type="System">
+                    <param id="0" name="Variable">guide_book_sheet</param>
+                    <param id="1" name="Value">&quot;stars&quot;</param>
+                </action>
+                <action id="-9" name="Set value" sid="4704701972702493" type="System">
+                    <param id="0" name="Variable">guide_book</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-12" name="Set group active" sid="7070579000157688" type="System">
+                    <param id="0" name="Group name">&quot;Ender&quot;</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action id="-9" name="Destroy" sid="7225913153265489" type="inventory_array" />
+                <action id="-3" name="Create object" sid="9879380700141956" type="System">
+                    <param id="0" name="Object to create">inventory_array</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="X">0</param>
+                    <param id="3" name="Y">0</param>
+                </action>
+                <action id="-12" name="Set group active" sid="382972258873073" type="System">
+                    <param id="0" name="Group name">&quot;GetStar&quot;</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action id="-12" name="Set group active" sid="7258202296296501" type="System">
+                    <param id="0" name="Group name">&quot;GetDot&quot;</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action id="-12" name="Set group active" sid="3345055454963856" type="System">
+                    <param id="0" name="Group name">&quot;ChaptersControl&quot;</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action id="-12" name="Set group active" sid="8011644686250738" type="System">
+                    <param id="0" name="Group name">&quot;IconsTapZoom&quot;</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action id="-12" name="Set group active" sid="190176975310882" type="System">
+                    <param id="0" name="Group name">&quot;Molly_Move_Block&quot;</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action id="-12" name="Set group active" sid="6177947195164676" type="System">
+                    <param id="0" name="Group name">&quot;Pause&quot;</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action id="-12" name="Set group active" sid="8007885816382121" type="System">
+                    <param id="0" name="Group name">&quot;redButtons&quot;</param>
+                    <param id="1" name="State">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="811704875110074">
+            <conditions>
+                <condition id="0" name="On function" sid="9526778442977307" type="Function">
+                    <param id="0" name="Name">&quot;tap-start&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Play" sid="3546437533078698" type="Audio">
+                    <param id="0" name="Audio file">tapbutton</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="9" name="Set scale" sid="119696364661314" type="playPreload">
+                    <param id="0" name="Scale">1</param>
+                </action>
+                <action id="-16" name="Wait" sid="323449536597627" type="System">
+                    <param id="0" name="Seconds">0.05</param>
+                </action>
+                <action id="9" name="Set scale" sid="852614169091147" type="playPreload">
+                    <param id="0" name="Scale">0.86</param>
+                </action>
+                <action id="-16" name="Wait" sid="8163542918587066" type="System">
+                    <param id="0" name="Seconds">0.1</param>
+                </action>
+                <action id="5" name="Set frame" sid="8238384914072073" type="playPreload">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

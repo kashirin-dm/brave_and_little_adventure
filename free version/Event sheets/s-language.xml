@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>s-language</name>
+    <events>
+        <event-block sid="4246380040254216">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="8210620370659344" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set local value" sid="611141053406990" type="WebStorage">
+                    <param id="0" name="Key">&quot;lang_locale&quot;</param>
+                    <param id="1" name="Value">&quot;en&quot;</param>
+                </action>
+                <action id="-3" name="Create object" sid="1214132743117273" type="System">
+                    <param id="0" name="Object to create">main_lang_window</param>
+                    <param id="1" name="Layer">&quot;uic&quot;</param>
+                    <param id="2" name="X">555</param>
+                    <param id="3" name="Y">8</param>
+                </action>
+                <action id="-3" name="Create object" sid="9140837728990837" type="System">
+                    <param id="0" name="Object to create">main_lang_done_button</param>
+                    <param id="1" name="Layer">&quot;uic&quot;</param>
+                    <param id="2" name="X">569</param>
+                    <param id="3" name="Y">520</param>
+                </action>
+                <action id="-3" name="Create object" sid="2470495691761171" type="System">
+                    <param id="0" name="Object to create">main_lang_en_butt</param>
+                    <param id="1" name="Layer">&quot;uic&quot;</param>
+                    <param id="2" name="X">568</param>
+                    <param id="3" name="Y">260</param>
+                </action>
+                <action id="-3" name="Create object" sid="1317906957160952" type="System">
+                    <param id="0" name="Object to create">main_lang_de_butt</param>
+                    <param id="1" name="Layer">&quot;uic&quot;</param>
+                    <param id="2" name="X">568</param>
+                    <param id="3" name="Y">320</param>
+                </action>
+                <action id="-3" name="Create object" sid="5260129421243909" type="System">
+                    <param id="0" name="Object to create">main_lang_ru_butt</param>
+                    <param id="1" name="Layer">&quot;uic&quot;</param>
+                    <param id="2" name="X">568</param>
+                    <param id="3" name="Y">380</param>
+                </action>
+                <action id="5" name="Set frame" sid="1962621104516061" type="main_lang_en_butt">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="0" name="Play" sid="7161168657834354" type="Audio">
+                    <param id="0" name="Audio file">goat-me-e-e</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="0" name="Play" sid="285583984342313" type="Audio">
+                    <param id="0" name="Audio file">theme_track</param>
+                    <param id="2" name="Loop">1</param>
+                    <param id="3" name="Volume">-10</param>
+                    <param id="1" name="Tag (optional)">&quot;theme&quot;</param>
+                </action>
+                <action id="-9" name="Set value" sid="715025824238080" type="System">
+                    <param id="0" name="Variable">MainMusic</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="9" name="Set scale" sid="348931786531374" type="main_lang_window">
+                    <param id="0" name="Scale">0.5</param>
+                </action>
+                <action id="9" name="Set scale" sid="390569583211409" type="main_lang_done_button">
+                    <param id="0" name="Scale">0.5</param>
+                </action>
+                <action id="9" name="Set scale" sid="722221705356685" type="main_lang_en_butt">
+                    <param id="0" name="Scale">0.5</param>
+                </action>
+                <action id="9" name="Set scale" sid="737244500815558" type="main_lang_de_butt">
+                    <param id="0" name="Scale">0.5</param>
+                </action>
+                <action id="9" name="Set scale" sid="502224322705011" type="main_lang_ru_butt">
+                    <param id="0" name="Scale">0.5</param>
+                </action>
+                <action id="0" name="Track View" sid="5474210451787025" type="GoogleAnalyticsWrapper">
+                    <param id="0" name="Screen">&quot;FirstLanguageScreen&quot;</param>
+                </action>
+                <action id="1" name="Track Event" sid="744020771317795" type="GoogleAnalyticsWrapper">
+                    <param id="0" name="Category">&quot;Screens&quot;</param>
+                    <param id="1" name="Action">&quot;Language Screen Start-Install&quot;</param>
+                    <param id="2" name="Label">&quot;GLOBAL&quot;</param>
+                    <param id="3" name="Value">0</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="151800495573075">
+                    <conditions>
+                        <condition id="0" name="Is Canvas+" sid="798038840026061" type="CocoonCanvasplus" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block any="1" sid="492976171733403">
+                            <conditions>
+                                <condition id="6" inverted="1" name="Compare key value (as text)" sid="253416767299976" type="WebStorage">
+                                    <param id="0" name="Key">&quot;IAP_PREMIUM&quot;</param>
+                                    <param id="1" name="Text to compare">&quot;Yes&quot;</param>
+                                    <param id="2" name="Case sensitivity">0</param>
+                                </condition>
+                                <condition id="3" inverted="1" name="Local key exists" sid="514313830691122" type="WebStorage">
+                                    <param id="0" name="Key">&quot;IAP_PREMIUM&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="771235867732216">
+                                    <conditions>
+                                        <condition id="6" inverted="1" name="Is showing banner ad" sid="851000807334162" type="CordovaAdMob" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="1" name="Show banner ad" sid="778202670462864" type="CordovaAdMob">
+                                            <param id="0" name="Position">1</param>
+                                            <param id="1" name="Size">6</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="367444498320374">
+                                    <conditions>
+                                        <condition id="9" inverted="1" name="Is showing video ad" sid="966748044010989" type="CordovaUnityAds" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Show video ad" sid="958362025454730" type="CordovaUnityAds" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Закрываем панель языков</comment>
+        <event-block sid="6459940799334993">
+            <conditions>
+                <condition id="3" name="On touched object" sid="1222325281935364" type="Touch">
+                    <param id="0" name="Object">main_lang_done_button</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Play" sid="3674787103418075" type="Audio">
+                    <param id="0" name="Audio file">tapbutton</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">15</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="9" name="Set scale" sid="7335655349158199" type="main_lang_done_button">
+                    <param id="0" name="Scale">0.6</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="7108400051331736">
+                    <conditions>
+                        <condition id="3" name="Compare frame" sid="2059784783485216" type="main_lang_en_butt">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Number">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="2169818442820505" type="WebStorage">
+                            <param id="0" name="Key">&quot;lang_locale&quot;</param>
+                            <param id="1" name="Value">&quot;en&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="4412359500156802">
+                    <conditions>
+                        <condition id="3" name="Compare frame" sid="9505726298408148" type="main_lang_de_butt">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Number">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="434302026144898" type="WebStorage">
+                            <param id="0" name="Key">&quot;lang_locale&quot;</param>
+                            <param id="1" name="Value">&quot;de&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="1742563373413609">
+                    <conditions>
+                        <condition id="3" name="Compare frame" sid="923672249777439" type="main_lang_ru_butt">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Number">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="5138623043480261" type="WebStorage">
+                            <param id="0" name="Key">&quot;lang_locale&quot;</param>
+                            <param id="1" name="Value">&quot;ru&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="9221122585837733">
+                    <conditions />
+                    <actions>
+                        <action id="-16" name="Wait" sid="5870557148566145" type="System">
+                            <param id="0" name="Seconds">0.2</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="486743697431185" type="main_lang_window" />
+                        <action id="-9" name="Destroy" sid="675084119571840" type="main_lang_done_button" />
+                        <action id="-9" name="Destroy" sid="256382741022174" type="main_lang_en_butt" />
+                        <action id="-9" name="Destroy" sid="156985519115949" type="main_lang_de_butt" />
+                        <action id="-9" name="Destroy" sid="770183747703677" type="main_lang_ru_butt" />
+                        <action id="-2" name="Go to layout" sid="3304237061562629" type="System">
+                            <param id="0" name="Layout">mainMenu</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Сразу меняем подзаголовок логотипа</comment>
+        <comment>Вкл инглиш</comment>
+        <event-block sid="7771424079067429">
+            <conditions>
+                <condition id="3" name="On touched object" sid="9403632972828955" type="Touch">
+                    <param id="0" name="Object">main_lang_en_butt</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Play" sid="2562177375948654" type="Audio">
+                    <param id="0" name="Audio file">tapbutton</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">15</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="9" name="Set scale" sid="1218773125172438" type="main_lang_en_butt">
+                    <param id="0" name="Scale">0.6</param>
+                </action>
+                <action id="5" name="Set frame" sid="5391827027161862" type="main_lang_en_butt">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="5" name="Set frame" sid="3669315307233824" type="main_lang_ru_butt">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+                <action id="5" name="Set frame" sid="620096057205371" type="main_lang_de_butt">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+                <action id="5" name="Set frame" sid="7983390961005101" type="main_logo_subscript">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Вкл нем</comment>
+        <event-block sid="8086133352997764">
+            <conditions>
+                <condition id="3" name="On touched object" sid="536645407332064" type="Touch">
+                    <param id="0" name="Object">main_lang_de_butt</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Play" sid="45407773427757" type="Audio">
+                    <param id="0" name="Audio file">tapbutton</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">15</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="9" name="Set scale" sid="4802560590101392" type="main_lang_de_butt">
+                    <param id="0" name="Scale">0.6</param>
+                </action>
+                <action id="5" name="Set frame" sid="8327720112666677" type="main_lang_de_butt">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="5" name="Set frame" sid="3999115963198899" type="main_lang_en_butt">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+                <action id="5" name="Set frame" sid="6301695937348581" type="main_lang_ru_butt">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+                <action id="5" name="Set frame" sid="3472027382460877" type="main_logo_subscript">
+                    <param id="0" name="Frame number">5</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Вкл русский</comment>
+        <event-block sid="3406289686557728">
+            <conditions>
+                <condition id="3" name="On touched object" sid="9410465346520576" type="Touch">
+                    <param id="0" name="Object">main_lang_ru_butt</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Play" sid="4847359967848364" type="Audio">
+                    <param id="0" name="Audio file">tapbutton</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">15</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="9" name="Set scale" sid="1021859091202703" type="main_lang_ru_butt">
+                    <param id="0" name="Scale">0.6</param>
+                </action>
+                <action id="5" name="Set frame" sid="8807600729127139" type="main_lang_en_butt">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+                <action id="5" name="Set frame" sid="982148166601231" type="main_lang_ru_butt">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="5" name="Set frame" sid="1047349981236111" type="main_lang_de_butt">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+                <action id="5" name="Set frame" sid="4855077810295151" type="main_logo_subscript">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="5407260333084784">
+            <conditions>
+                <condition id="4" inverted="1" name="Is touching object" sid="3110037848371838" type="Touch">
+                    <param id="0" name="Object">main_lang_en_butt</param>
+                </condition>
+                <condition id="-4" name="Trigger once while true" sid="6115452381879761" type="System" />
+            </conditions>
+            <actions>
+                <action id="-16" name="Wait" sid="989242622603181" type="System">
+                    <param id="0" name="Seconds">0.05</param>
+                </action>
+                <action id="9" name="Set scale" sid="4367920231470075" type="main_lang_en_butt">
+                    <param id="0" name="Scale">0.5</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="5173139270422833">
+            <conditions>
+                <condition id="4" inverted="1" name="Is touching object" sid="1456070434009023" type="Touch">
+                    <param id="0" name="Object">main_lang_ru_butt</param>
+                </condition>
+                <condition id="-4" name="Trigger once while true" sid="7304367710371549" type="System" />
+            </conditions>
+            <actions>
+                <action id="-16" name="Wait" sid="700167865820657" type="System">
+                    <param id="0" name="Seconds">0.05</param>
+                </action>
+                <action id="9" name="Set scale" sid="1256863966607287" type="main_lang_ru_butt">
+                    <param id="0" name="Scale">0.5</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="9911675831319401">
+            <conditions>
+                <condition id="4" inverted="1" name="Is touching object" sid="6489374127825713" type="Touch">
+                    <param id="0" name="Object">main_lang_de_butt</param>
+                </condition>
+                <condition id="-4" name="Trigger once while true" sid="3627577044250731" type="System" />
+            </conditions>
+            <actions>
+                <action id="-16" name="Wait" sid="247890170639622" type="System">
+                    <param id="0" name="Seconds">0.05</param>
+                </action>
+                <action id="9" name="Set scale" sid="9442123579623682" type="main_lang_de_butt">
+                    <param id="0" name="Scale">0.5</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="8096623721674866">
+            <conditions>
+                <condition id="4" inverted="1" name="Is touching object" sid="5249382250014429" type="Touch">
+                    <param id="0" name="Object">main_lang_done_button</param>
+                </condition>
+                <condition id="-4" name="Trigger once while true" sid="3799069498133014" type="System" />
+            </conditions>
+            <actions>
+                <action id="-16" name="Wait" sid="233940826045640" type="System">
+                    <param id="0" name="Seconds">0.05</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="748547471250594">
+            <conditions>
+                <condition id="9" name="Is showing video ad" sid="735622424297381" type="CordovaUnityAds" />
+                <condition id="-4" name="Trigger once while true" sid="143013505066942" type="System" />
+            </conditions>
+            <actions>
+                <action id="10" name="Set master volume" sid="219064871445326" type="Audio">
+                    <param id="0" name="dB">-100</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="253516483738414">
+            <conditions>
+                <condition id="9" inverted="1" name="Is showing video ad" sid="753298762996550" type="CordovaUnityAds" />
+                <condition id="-14" name="Compare variable" sid="433035110055255" type="System">
+                    <param id="0" name="Variable">soundStatus</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+                <condition id="-4" name="Trigger once while true" sid="399160664791092" type="System" />
+            </conditions>
+            <actions>
+                <action id="10" name="Set master volume" sid="410267525092532" type="Audio">
+                    <param id="0" name="dB">0</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

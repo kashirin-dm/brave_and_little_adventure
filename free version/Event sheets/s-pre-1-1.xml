@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>s-pre-1-1</name>
+    <events>
+        <include>s-pre-gen</include>
+        <comment>Вызываем функцию с общими настройками старта предуровня. Затем настройки группу конктно запускаемого уровня и затем переменные для конкретного уровня</comment>
+        <event-block sid="9885413672145528">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="85094789602792" type="System" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="6682691099733515">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="196339766347547" type="System">
+                            <param id="0" name="First value">WindowWidth/WindowHeight</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Second value">1.5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="9" name="Set scale" sid="7197346137125533" type="pre_1_1">
+                            <param id="0" name="Scale">0.8</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="6868120022988063">
+                    <conditions />
+                    <actions>
+                        <action id="0" name="Call function" sid="5008288660006275" type="Function">
+                            <param id="0" name="Name">&quot;pre-start&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                        <action id="-9" name="Set value" sid="8299776764630037" type="System">
+                            <param id="0" name="Variable">giftCount</param>
+                            <param id="1" name="Value">2</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="2028814523398604" type="System">
+                            <param id="0" name="Variable">sublevel</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="978222684435769" type="System">
+                            <param id="0" name="Group name">&quot;Local_Molly_1_1&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="2799307017578613" type="System">
+                            <param id="0" name="Group name">&quot;initialization_1-1&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4115636109821773" type="System">
+                            <param id="0" name="Group name">&quot;helper&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="5163228283624582" type="System">
+                            <param id="0" name="Group name">&quot;Start-1-1&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="7480367176919821" type="System">
+                            <param id="0" name="Group name">&quot;scripts&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="8517338457110491" type="System">
+                            <param id="0" name="Group name">&quot;script_1&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="2843846570985194" type="System">
+                            <param id="0" name="Group name">&quot;script_2&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="5206125148983965" type="System">
+                            <param id="0" name="Group name">&quot;script_3&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="9068802297091307" type="System">
+                            <param id="0" name="Group name">&quot;script_6&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="3538097850531588" type="System">
+                            <param id="0" name="Group name">&quot;script_7&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="5607113981239838" type="System">
+                            <param id="0" name="Group name">&quot;script_8&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="7106966756567378" type="System">
+                            <param id="0" name="Group name">&quot;script_9&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="9242196591633488" type="System">
+                            <param id="0" name="Group name">&quot;script_10&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="5678936991635773" type="System">
+                            <param id="0" name="Group name">&quot;script_11&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="8098119886306117" type="System">
+                            <param id="0" name="Group name">&quot;Music-1-1&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="9665577708242939" type="System">
+                            <param id="0" name="Group name">&quot;restart1-1&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="411966010887178" type="System">
+                            <param id="0" name="Group name">&quot;Ender_1_1&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4145021881173442" type="System">
+                            <param id="0" name="Group name">&quot;Local_Molly_1_1&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4470711227006923" type="System">
+                            <param id="0" name="Group name">&quot;Local_Molly_1_1&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="8953733686767212" type="System">
+                            <param id="0" name="Group name">&quot;script_8_2&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="9866545628177308">
+                    <conditions>
+                        <condition id="6" name="Compare key value (as text)" sid="7639626813289242" type="WebStorage">
+                            <param id="0" name="Key">&quot;level_1_1&quot;</param>
+                            <param id="1" name="Text to compare">&quot;null_bum&quot;</param>
+                            <param id="2" name="Case sensitivity">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="546615434909088" type="WebStorage">
+                            <param id="0" name="Key">&quot;level_1_1&quot;</param>
+                            <param id="1" name="Value">&quot;null&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="111161096656268">
+                    <conditions>
+                        <condition id="0" name="Is Canvas+" sid="609378008309430" type="CocoonCanvasplus" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="982562390856249">
+                            <conditions>
+                                <condition id="6" name="Is showing banner ad" sid="494909908681587" type="CordovaAdMob" />
+                            </conditions>
+                            <actions>
+                                <action id="3" name="Hide banner ad" sid="733412365958552" type="CordovaAdMob" />
+                            </actions>
+                        </event-block>
+                        <event-block any="1" sid="845775689655191">
+                            <conditions>
+                                <condition id="6" inverted="1" name="Compare key value (as text)" sid="417306605961604" type="WebStorage">
+                                    <param id="0" name="Key">&quot;IAP_PREMIUM&quot;</param>
+                                    <param id="1" name="Text to compare">&quot;Yes&quot;</param>
+                                    <param id="2" name="Case sensitivity">0</param>
+                                </condition>
+                                <condition id="3" inverted="1" name="Local key exists" sid="663123771592543" type="WebStorage">
+                                    <param id="0" name="Key">&quot;IAP_PREMIUM&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="961382736228522">
+                                    <conditions>
+                                        <condition id="6" inverted="1" name="Is showing banner ad" sid="924849973603118" type="CordovaAdMob" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-16" name="Wait" sid="398347474269823" type="System">
+                                            <param id="0" name="Seconds">0.3</param>
+                                        </action>
+                                        <action id="1" name="Show banner ad" sid="692255879266338" type="CordovaAdMob">
+                                            <param id="0" name="Position">1</param>
+                                            <param id="1" name="Size">6</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="182169133960871">
+                                    <conditions>
+                                        <condition id="9" inverted="1" name="Is showing video ad" sid="692397179518246" type="CordovaUnityAds" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Show video ad" sid="469927351850090" type="CordovaUnityAds" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>При нажатии на кнопку плей запускаем стандартный сценарий через функцию а затем уже уникальное название уровня для загрузки</comment>
+        <event-block sid="429814400919923">
+            <conditions>
+                <condition id="3" name="On touched object" sid="7245047276682643" type="Touch">
+                    <param id="0" name="Object">playPreload</param>
+                </condition>
+                <condition id="3" name="Compare frame" sid="5478090305290746" type="playPreload">
+                    <param id="0" name="Comparison">0</param>
+                    <param id="1" name="Number">0</param>
+                </condition>
+                <condition id="9" inverted="1" name="Is showing video ad" sid="435538498611853" type="CordovaUnityAds" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="1325959650467041" type="Function">
+                    <param id="0" name="Name">&quot;tap-start&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="919576665254568">
+                    <conditions>
+                        <condition id="6" name="Is showing banner ad" sid="253123383625581" type="CordovaAdMob" />
+                    </conditions>
+                    <actions>
+                        <action id="3" name="Hide banner ad" sid="576446231989810" type="CordovaAdMob" />
+                    </actions>
+                </event-block>
+                <event-block sid="901120018202442">
+                    <conditions />
+                    <actions>
+                        <action id="-16" name="Wait" sid="6994672169471406" type="System">
+                            <param id="0" name="Seconds">0.2</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="4615854690494188" type="System">
+                            <param id="0" name="Layout">level-1-1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>

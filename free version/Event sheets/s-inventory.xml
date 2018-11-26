@@ -1,0 +1,952 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>s-inventory</name>
+    <events>
+        <comment>Там где нужен инвентарь, инклудим его. иначе нет, чтоб не грузил</comment>
+        <comment>Там где нужен инвентарь нужно заранее поместить объект инвентаря, поставить анимации и сделать копии объектов с фреймами</comment>
+        <comment>1&#x09;&#x09;&#x09;2&#x09;&#x09;&#x09;3&#x0D;&#x0A;82 / 640[691]&#x09;&#x09;&#x09;154 / 640[691]&#x09;&#x09;&#x09;226 / 640[691]&#x0D;&#x0A;</comment>
+        <comment>инвентарь расчитан на 13 предметов для увеличения уменьшения места редактировать массив и функцию core&#x0D;&#x0A;&#x0D;&#x0A;при старте нового уровня записываем в массив названия предметов c расчетом что x в массиве будет равен номеру кадра в анимации для текущего уровня&#x0D;&#x0A;</comment>
+        <event-block sid="6184450595000282">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="2151247547151022" type="System" />
+            </conditions>
+            <actions>
+                <action id="-16" name="Wait" sid="8979921302186542" type="System">
+                    <param id="0" name="Seconds">0.5</param>
+                </action>
+            </actions>
+            <sub-events>
+                <comment>выстраивает инвентарь &#x0D;&#x0A;для сброса активировать clear (очистить)</comment>
+                <event-block sid="9436894966486166">
+                    <conditions>
+                        <condition id="-12" name="Repeat" sid="6152292910701596" type="System">
+                            <param id="0" name="Count">13</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="2504564194260859">
+                            <conditions>
+                                <condition id="1" name="Compare at XY" sid="6397713617309337" type="inventory_array">
+                                    <param id="0" name="X">loopindex</param>
+                                    <param id="1" name="Y">1</param>
+                                    <param id="2" name="Comparison">4</param>
+                                    <param id="3" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="7699359923216436">
+                                    <conditions>
+                                        <condition id="3" name="Compare frame" sid="3205076032461263" type="inventory">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="Number">loopindex</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-3" name="Set position" sid="2451754792174956" type="inventory">
+                                            <param id="0" name="X">inventory_array.At(loopindex, 1)</param>
+                                            <param id="1" name="Y">WindowHeight</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>добавить в инвентарь</comment>
+        <event-block sid="3784435597955781">
+            <conditions>
+                <condition id="0" name="On function" sid="5667273832537925" type="Function">
+                    <param id="0" name="Name">&quot;addInv&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="3" name="Set at XY" sid="2237120538160637" type="inventory_array">
+                    <param id="0" name="X">Function.Call(&quot;core&quot;, Function.Param(0))</param>
+                    <param id="1" name="Y">1</param>
+                    <param id="2" name="Value">inventory_array.lastFree</param>
+                </action>
+                <action id="0" name="Call function" sid="4439756630823782" type="Function">
+                    <param id="0" name="Name">&quot;act&quot;</param>
+                    <param id="1" name="Parameter {n}">Function.Call(&quot;core&quot;, Function.Param(0)){###}&quot;add&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>убрать из инвентаря</comment>
+        <event-block sid="1121168991810921">
+            <conditions>
+                <condition id="0" name="On function" sid="8764870332483276" type="Function">
+                    <param id="0" name="Name">&quot;subInv&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="3" name="Set at XY" sid="6216386398191295" type="inventory_array">
+                    <param id="0" name="X">Function.Call(&quot;core&quot;, Function.Param(0))</param>
+                    <param id="1" name="Y">1</param>
+                    <param id="2" name="Value">0</param>
+                </action>
+                <action id="0" name="Call function" sid="6828451863980728" type="Function">
+                    <param id="0" name="Name">&quot;act&quot;</param>
+                    <param id="1" name="Parameter {n}">Function.Call(&quot;core&quot;, Function.Param(0)){###}&quot;sub&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>изменить ячейку инвентаря&#x0D;&#x0A;3 действие изменил на inv.lastFree</comment>
+        <event-block sid="223878671472397">
+            <conditions>
+                <condition id="0" name="On function" sid="7180756614451542" type="Function">
+                    <param id="0" name="Name">&quot;setInv&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="3" name="Set at XY" sid="9786755105972461" type="inventory_array">
+                    <param id="0" name="X">Function.Call(&quot;core&quot;, Function.Param(0))</param>
+                    <param id="1" name="Y">1</param>
+                    <param id="2" name="Value">0</param>
+                </action>
+                <action id="3" name="Set at XY" sid="8192418344702415" type="inventory_array">
+                    <param id="0" name="X">Function.Call(&quot;core&quot;, Function.Param(1))</param>
+                    <param id="1" name="Y">1</param>
+                    <param id="2" name="Value">inventory_array.lastFree</param>
+                </action>
+                <action id="0" name="Call function" sid="2112182537874367" type="Function">
+                    <param id="0" name="Name">&quot;act&quot;</param>
+                    <param id="1" name="Parameter {n}">Function.Call(&quot;core&quot;, Function.Param(0)){###}&quot;set&quot;{###}Function.Call(&quot;core&quot;, Function.Param(1))</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>проверить есть ли предмет в инвентаре&#x0D;&#x0A;Function.Call(&quot;checkInv&quot;, &quot;wood&quot;)&#x0D;&#x0A;если есть вернет 1 иначе 0</comment>
+        <event-block sid="4521193185315801">
+            <conditions>
+                <condition id="0" name="On function" sid="4356499192830455" type="Function">
+                    <param id="0" name="Name">&quot;checkInv&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="5590120732239055">
+                    <conditions>
+                        <condition id="1" name="Compare at XY" sid="4485205230496921" type="inventory_array">
+                            <param id="0" name="X">Function.Call(&quot;core&quot;, Function.Param(0))</param>
+                            <param id="1" name="Y">1</param>
+                            <param id="2" name="Comparison">4</param>
+                            <param id="3" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set return value" sid="4311935341135552" type="Function">
+                            <param id="0" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="741683130753103">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="1762866834828135" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set return value" sid="3610452496097538" type="Function">
+                            <param id="0" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="3794473857104289">
+            <conditions>
+                <condition id="0" name="On function" sid="4250442977727142" type="Function">
+                    <param id="0" name="Name">&quot;act&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <comment>доб.</comment>
+                <event-block sid="6532104577745112">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="2406079123727039" type="Function">
+                            <param id="0" name="Index">1</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;add&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="5302235637678509">
+                            <conditions>
+                                <condition id="3" name="Compare frame" sid="6713989402145196" type="inventory">
+                                    <param id="0" name="Comparison">0</param>
+                                    <param id="1" name="Number">Function.Param(0)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Set position" sid="9769125595870728" type="inventory">
+                                    <param id="0" name="X">ViewportLeft(&quot;ui&quot;)+inventory_array.lastFree</param>
+                                    <param id="1" name="Y">ViewportBottom(&quot;ui&quot;)+51</param>
+                                </action>
+                                <action behavior="MoveTo" id="4" name="Move to XY" sid="9675379626809784" type="inventory">
+                                    <param id="0" name="X">ViewportLeft(&quot;ui&quot;)+inventory_array.lastFree</param>
+                                    <param id="1" name="Y">ViewportBottom(&quot;ui&quot;)</param>
+                                </action>
+                                <action id="-11" name="Add to" sid="8108196708584073" type="inventory_array">
+                                    <param id="0" name="Instance variable">lastFree</param>
+                                    <param id="1" name="Value">72</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>обмен</comment>
+                <event-block sid="4435731475184786">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="1318993259365484" type="Function">
+                            <param id="0" name="Index">1</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;set&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="435333124490545">
+                            <conditions>
+                                <condition id="3" name="Compare frame" sid="6341724971554556" type="inventory">
+                                    <param id="0" name="Comparison">0</param>
+                                    <param id="1" name="Number">Function.Param(0)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="MoveTo" id="8" name="Move to distance-angle" sid="8686195472479477" type="inventory">
+                                    <param id="0" name="Distance">51</param>
+                                    <param id="1" name="Angle">90</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="2628356864698403" type="inventory_array">
+                                    <param id="0" name="Instance variable">space</param>
+                                    <param id="1" name="Value">inventory.X</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="5184086728828983">
+                            <conditions>
+                                <condition id="3" name="Compare frame" sid="8433758220289074" type="inventory">
+                                    <param id="0" name="Comparison">0</param>
+                                    <param id="1" name="Number">Function.Param(2)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-16" name="Wait" sid="750445180576282" type="System">
+                                    <param id="0" name="Seconds">0.2</param>
+                                </action>
+                                <action id="-3" name="Set position" sid="998454977087347" type="inventory">
+                                    <param id="0" name="X">ViewportLeft(&quot;ui&quot;)+inventory_array.space</param>
+                                    <param id="1" name="Y">ViewportBottom(&quot;ui&quot;)+51</param>
+                                </action>
+                                <action behavior="MoveTo" id="4" name="Move to XY" sid="2617946088342128" type="inventory">
+                                    <param id="0" name="X">ViewportLeft(&quot;ui&quot;)+inventory_array.space</param>
+                                    <param id="1" name="Y">ViewportBottom(&quot;ui&quot;)</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="7226872953999306" type="inventory_array">
+                                    <param id="0" name="Instance variable">space</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>уд.</comment>
+                <event-block sid="7363437805752363">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="1434697935916999" type="Function">
+                            <param id="0" name="Index">1</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;sub&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="6532950743077803">
+                            <conditions>
+                                <condition id="3" name="Compare frame" sid="6017530093532347" type="inventory">
+                                    <param id="0" name="Comparison">0</param>
+                                    <param id="1" name="Number">Function.Param(0)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="MoveTo" id="8" name="Move to distance-angle" sid="9785360285116673" type="inventory">
+                                    <param id="0" name="Distance">300</param>
+                                    <param id="1" name="Angle">90</param>
+                                </action>
+                                <action id="-12" name="Subtract from" sid="7034952006873423" type="inventory_array">
+                                    <param id="0" name="Instance variable">lastFree</param>
+                                    <param id="1" name="Value">72</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="7753663895988787" type="inventory_array">
+                                    <param id="0" name="Instance variable">space</param>
+                                    <param id="1" name="Value">inventory.X</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="4181824266836066">
+                            <conditions>
+                                <condition id="-2" name="Compare Y" sid="1532768881085" type="inventory">
+                                    <param id="0" name="Comparison">0</param>
+                                    <param id="1" name="Y co-ordinate">ViewportBottom(&quot;ui&quot;)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <comment>выстраивание&#x0D;&#x0A;странное поведение при выборки: по фреймам последовательно при выборки по координатам вайт на 1 раз</comment>
+                                <event-block sid="6672323415021746">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="8675102093248429" type="inventory">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="X co-ordinate">ViewportLeft(&quot;ui&quot;)+154</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="7773483350060464">
+                                            <conditions>
+                                                <condition id="-1" name="Compare X" sid="3003296460304661" type="inventory">
+                                                    <param id="0" name="Comparison">4</param>
+                                                    <param id="1" name="X co-ordinate">inventory_array.space</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-16" name="Wait" sid="9189760549651206" type="System">
+                                                    <param id="0" name="Seconds">0.1</param>
+                                                </action>
+                                                <action id="3" name="Set at XY" sid="7043217860579041" type="inventory_array">
+                                                    <param id="0" name="X">inventory.AnimationFrame</param>
+                                                    <param id="1" name="Y">1</param>
+                                                    <param id="2" name="Value">82</param>
+                                                </action>
+                                                <action behavior="MoveTo" id="8" name="Move to distance-angle" sid="51701388560842" type="inventory">
+                                                    <param id="0" name="Distance">72</param>
+                                                    <param id="1" name="Angle">180</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="4198002953703712">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="4490784863411064" type="inventory">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="X co-ordinate">ViewportLeft(&quot;ui&quot;)+226</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="7963333850450452">
+                                            <conditions>
+                                                <condition id="-1" name="Compare X" sid="6566134988642606" type="inventory">
+                                                    <param id="0" name="Comparison">4</param>
+                                                    <param id="1" name="X co-ordinate">inventory_array.space</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-16" name="Wait" sid="3253858132015514" type="System">
+                                                    <param id="0" name="Seconds">0.2</param>
+                                                </action>
+                                                <action id="3" name="Set at XY" sid="4967228325488153" type="inventory_array">
+                                                    <param id="0" name="X">inventory.AnimationFrame</param>
+                                                    <param id="1" name="Y">1</param>
+                                                    <param id="2" name="Value">154</param>
+                                                </action>
+                                                <action behavior="MoveTo" id="8" name="Move to distance-angle" sid="63447861380193" type="inventory">
+                                                    <param id="0" name="Distance">72</param>
+                                                    <param id="1" name="Angle">180</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="3242465489985272">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="7412649940142988" type="inventory">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="X co-ordinate">ViewportLeft(&quot;ui&quot;)+298</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="7556647574637998">
+                                            <conditions>
+                                                <condition id="-1" name="Compare X" sid="2115787820244952" type="inventory">
+                                                    <param id="0" name="Comparison">4</param>
+                                                    <param id="1" name="X co-ordinate">inventory_array.space</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-16" name="Wait" sid="1062562918589049" type="System">
+                                                    <param id="0" name="Seconds">0.3</param>
+                                                </action>
+                                                <action id="3" name="Set at XY" sid="1694214201512088" type="inventory_array">
+                                                    <param id="0" name="X">inventory.AnimationFrame</param>
+                                                    <param id="1" name="Y">1</param>
+                                                    <param id="2" name="Value">226</param>
+                                                </action>
+                                                <action behavior="MoveTo" id="8" name="Move to distance-angle" sid="2763183254021441" type="inventory">
+                                                    <param id="0" name="Distance">72</param>
+                                                    <param id="1" name="Angle">180</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="5790847592268038">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="8779387875963272" type="inventory">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="X co-ordinate">ViewportLeft(&quot;ui&quot;)+370</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="84971469910585">
+                                            <conditions>
+                                                <condition id="-1" name="Compare X" sid="7663012339579613" type="inventory">
+                                                    <param id="0" name="Comparison">4</param>
+                                                    <param id="1" name="X co-ordinate">inventory_array.space</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-16" name="Wait" sid="806199436856651" type="System">
+                                                    <param id="0" name="Seconds">0.4</param>
+                                                </action>
+                                                <action id="3" name="Set at XY" sid="7110609136563151" type="inventory_array">
+                                                    <param id="0" name="X">inventory.AnimationFrame</param>
+                                                    <param id="1" name="Y">1</param>
+                                                    <param id="2" name="Value">298</param>
+                                                </action>
+                                                <action behavior="MoveTo" id="8" name="Move to distance-angle" sid="8850194211480009" type="inventory">
+                                                    <param id="0" name="Distance">72</param>
+                                                    <param id="1" name="Angle">180</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="4336978091004026">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="6872757106724512" type="inventory">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="X co-ordinate">ViewportLeft(&quot;ui&quot;)+442</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="9588699543405577">
+                                            <conditions>
+                                                <condition id="-1" name="Compare X" sid="5824944662406656" type="inventory">
+                                                    <param id="0" name="Comparison">4</param>
+                                                    <param id="1" name="X co-ordinate">inventory_array.space</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-16" name="Wait" sid="7958373899890129" type="System">
+                                                    <param id="0" name="Seconds">0.5</param>
+                                                </action>
+                                                <action id="3" name="Set at XY" sid="1334937125668809" type="inventory_array">
+                                                    <param id="0" name="X">inventory.AnimationFrame</param>
+                                                    <param id="1" name="Y">1</param>
+                                                    <param id="2" name="Value">370</param>
+                                                </action>
+                                                <action behavior="MoveTo" id="8" name="Move to distance-angle" sid="65475482500126" type="inventory">
+                                                    <param id="0" name="Distance">72</param>
+                                                    <param id="1" name="Angle">180</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="5037437386229413">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="7108604201928226" type="inventory">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="X co-ordinate">ViewportLeft(&quot;ui&quot;)+514</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="559463093848013">
+                                            <conditions>
+                                                <condition id="-1" name="Compare X" sid="2951924940165802" type="inventory">
+                                                    <param id="0" name="Comparison">4</param>
+                                                    <param id="1" name="X co-ordinate">inventory_array.space</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-16" name="Wait" sid="4465898767429256" type="System">
+                                                    <param id="0" name="Seconds">0.6</param>
+                                                </action>
+                                                <action id="3" name="Set at XY" sid="715694589269483" type="inventory_array">
+                                                    <param id="0" name="X">inventory.AnimationFrame</param>
+                                                    <param id="1" name="Y">1</param>
+                                                    <param id="2" name="Value">442</param>
+                                                </action>
+                                                <action behavior="MoveTo" id="8" name="Move to distance-angle" sid="1805790738669686" type="inventory">
+                                                    <param id="0" name="Distance">72</param>
+                                                    <param id="1" name="Angle">180</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="3165572012883493">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="5074717489122391" type="inventory">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="X co-ordinate">ViewportLeft(&quot;ui&quot;)+586</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="7220888264199601">
+                                            <conditions>
+                                                <condition id="-1" name="Compare X" sid="7398339367782544" type="inventory">
+                                                    <param id="0" name="Comparison">4</param>
+                                                    <param id="1" name="X co-ordinate">inventory_array.space</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-16" name="Wait" sid="1043414662078278" type="System">
+                                                    <param id="0" name="Seconds">0.7</param>
+                                                </action>
+                                                <action id="3" name="Set at XY" sid="8509132407714312" type="inventory_array">
+                                                    <param id="0" name="X">inventory.AnimationFrame</param>
+                                                    <param id="1" name="Y">1</param>
+                                                    <param id="2" name="Value">514</param>
+                                                </action>
+                                                <action behavior="MoveTo" id="8" name="Move to distance-angle" sid="2823915315391719" type="inventory">
+                                                    <param id="0" name="Distance">72</param>
+                                                    <param id="1" name="Angle">180</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="6582681177493963">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="4278837178548004" type="inventory">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="X co-ordinate">ViewportLeft(&quot;ui&quot;)+658</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="4663194521771566">
+                                            <conditions>
+                                                <condition id="-1" name="Compare X" sid="2898703767157816" type="inventory">
+                                                    <param id="0" name="Comparison">4</param>
+                                                    <param id="1" name="X co-ordinate">inventory_array.space</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-16" name="Wait" sid="161182926729113" type="System">
+                                                    <param id="0" name="Seconds">0.8</param>
+                                                </action>
+                                                <action id="3" name="Set at XY" sid="4274636786743048" type="inventory_array">
+                                                    <param id="0" name="X">inventory.AnimationFrame</param>
+                                                    <param id="1" name="Y">1</param>
+                                                    <param id="2" name="Value">586</param>
+                                                </action>
+                                                <action behavior="MoveTo" id="8" name="Move to distance-angle" sid="8073033407108611" type="inventory">
+                                                    <param id="0" name="Distance">72</param>
+                                                    <param id="1" name="Angle">180</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="1518220011221036">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="9758592020500729" type="inventory">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="X co-ordinate">ViewportLeft(&quot;ui&quot;)+730</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="7864301067771437">
+                                            <conditions>
+                                                <condition id="-1" name="Compare X" sid="4700574124371137" type="inventory">
+                                                    <param id="0" name="Comparison">4</param>
+                                                    <param id="1" name="X co-ordinate">inventory_array.space</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-16" name="Wait" sid="5710722722684597" type="System">
+                                                    <param id="0" name="Seconds">0.9</param>
+                                                </action>
+                                                <action id="3" name="Set at XY" sid="6275846818992073" type="inventory_array">
+                                                    <param id="0" name="X">inventory.AnimationFrame</param>
+                                                    <param id="1" name="Y">1</param>
+                                                    <param id="2" name="Value">658</param>
+                                                </action>
+                                                <action behavior="MoveTo" id="8" name="Move to distance-angle" sid="4716323235642721" type="inventory">
+                                                    <param id="0" name="Distance">72</param>
+                                                    <param id="1" name="Angle">180</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="2054304040844606">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="8268523741837677" type="inventory">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="X co-ordinate">ViewportLeft(&quot;ui&quot;)+802</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="2737347433730291">
+                                            <conditions>
+                                                <condition id="-1" name="Compare X" sid="945372536644379" type="inventory">
+                                                    <param id="0" name="Comparison">4</param>
+                                                    <param id="1" name="X co-ordinate">inventory_array.space</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-16" name="Wait" sid="9544476399296786" type="System">
+                                                    <param id="0" name="Seconds">1</param>
+                                                </action>
+                                                <action id="3" name="Set at XY" sid="6384108634677693" type="inventory_array">
+                                                    <param id="0" name="X">inventory.AnimationFrame</param>
+                                                    <param id="1" name="Y">1</param>
+                                                    <param id="2" name="Value">730</param>
+                                                </action>
+                                                <action behavior="MoveTo" id="8" name="Move to distance-angle" sid="8672987853955128" type="inventory">
+                                                    <param id="0" name="Distance">72</param>
+                                                    <param id="1" name="Angle">180</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="6441451175646737">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="313812305849822" type="inventory">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="X co-ordinate">ViewportLeft(&quot;ui&quot;)+874</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="1533245102083412">
+                                            <conditions>
+                                                <condition id="-1" name="Compare X" sid="3606808841221649" type="inventory">
+                                                    <param id="0" name="Comparison">4</param>
+                                                    <param id="1" name="X co-ordinate">inventory_array.space</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-16" name="Wait" sid="8438163345494847" type="System">
+                                                    <param id="0" name="Seconds">1.1</param>
+                                                </action>
+                                                <action id="3" name="Set at XY" sid="2376624355035266" type="inventory_array">
+                                                    <param id="0" name="X">inventory.AnimationFrame</param>
+                                                    <param id="1" name="Y">1</param>
+                                                    <param id="2" name="Value">802</param>
+                                                </action>
+                                                <action behavior="MoveTo" id="8" name="Move to distance-angle" sid="2709014055069184" type="inventory">
+                                                    <param id="0" name="Distance">72</param>
+                                                    <param id="1" name="Angle">180</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="1374894770820097">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="4322268422359151" type="inventory">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="X co-ordinate">ViewportLeft(&quot;ui&quot;)+946</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="2692787452410779">
+                                            <conditions>
+                                                <condition id="-1" name="Compare X" sid="9251818000595836" type="inventory">
+                                                    <param id="0" name="Comparison">4</param>
+                                                    <param id="1" name="X co-ordinate">inventory_array.space</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-16" name="Wait" sid="1629844647183712" type="System">
+                                                    <param id="0" name="Seconds">1.2</param>
+                                                </action>
+                                                <action id="3" name="Set at XY" sid="5089084339867488" type="inventory_array">
+                                                    <param id="0" name="X">inventory.AnimationFrame</param>
+                                                    <param id="1" name="Y">1</param>
+                                                    <param id="2" name="Value">874</param>
+                                                </action>
+                                                <action behavior="MoveTo" id="8" name="Move to distance-angle" sid="4854986900151822" type="inventory">
+                                                    <param id="0" name="Distance">72</param>
+                                                    <param id="1" name="Angle">180</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="7634319491281337">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="4561679881080924" type="inventory">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="X co-ordinate">ViewportLeft(&quot;ui&quot;)+1018</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="2193663872708362">
+                                            <conditions>
+                                                <condition id="-1" name="Compare X" sid="4825971642473896" type="inventory">
+                                                    <param id="0" name="Comparison">4</param>
+                                                    <param id="1" name="X co-ordinate">inventory_array.space</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-16" name="Wait" sid="8991096921980731" type="System">
+                                                    <param id="0" name="Seconds">1.3</param>
+                                                </action>
+                                                <action id="3" name="Set at XY" sid="9659218130577395" type="inventory_array">
+                                                    <param id="0" name="X">inventory.AnimationFrame</param>
+                                                    <param id="1" name="Y">1</param>
+                                                    <param id="2" name="Value">946</param>
+                                                </action>
+                                                <action behavior="MoveTo" id="8" name="Move to distance-angle" sid="2915836652641207" type="inventory">
+                                                    <param id="0" name="Distance">72</param>
+                                                    <param id="1" name="Angle">180</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="2493614145720036">
+                            <conditions />
+                            <actions>
+                                <action id="-10" name="Set value" sid="6227371290893554" type="inventory_array">
+                                    <param id="0" name="Instance variable">space</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="6319111068951227">
+            <conditions>
+                <condition id="0" name="On function" sid="5367763929437348" type="Function">
+                    <param id="0" name="Name">&quot;core&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <comment>циклы не использую - чтобы не было и намека на фризы</comment>
+                <event-block sid="6128840975852462">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="5336037434787419" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">inventory_array.At(0,0)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set return value" sid="6323474440040273" type="Function">
+                            <param id="0" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="523574405902649">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="2701894974533218" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">inventory_array.At(1,0)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set return value" sid="4647720381569386" type="Function">
+                            <param id="0" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="8668879392740648">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="6378298797322538" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">inventory_array.At(2,0)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set return value" sid="8400038061174258" type="Function">
+                            <param id="0" name="Value">2</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="4761257646487308">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="9886059977023002" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">inventory_array.At(3,0)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set return value" sid="6098905536552581" type="Function">
+                            <param id="0" name="Value">3</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="8321033984614172">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="251141547971496" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">inventory_array.At(4,0)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set return value" sid="3568698100474619" type="Function">
+                            <param id="0" name="Value">4</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3160331635148731">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="9902977727122158" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">inventory_array.At(5,0)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set return value" sid="2260002068400545" type="Function">
+                            <param id="0" name="Value">5</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3866714911490791">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="444276435913876" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">inventory_array.At(6,0)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set return value" sid="2742799402278279" type="Function">
+                            <param id="0" name="Value">6</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7648576527089879">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="9038492055257565" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">inventory_array.At(7,0)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set return value" sid="551625424962053" type="Function">
+                            <param id="0" name="Value">7</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3141409419654024">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="2029350420294038" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">inventory_array.At(8,0)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set return value" sid="801510944083699" type="Function">
+                            <param id="0" name="Value">8</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="8583033305227218">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="2565592829814324" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">inventory_array.At(9,0)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set return value" sid="4170807924077418" type="Function">
+                            <param id="0" name="Value">9</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="8572081496640919">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="3267130226029435" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">inventory_array.At(10,0)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set return value" sid="6328190695030316" type="Function">
+                            <param id="0" name="Value">10</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="479410081880435">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="6212606238934931" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">inventory_array.At(11,0)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set return value" sid="5486698765274043" type="Function">
+                            <param id="0" name="Value">11</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7550655144577966">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="2497148972003885" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">inventory_array.At(12,0)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set return value" sid="8794359281016073" type="Function">
+                            <param id="0" name="Value">12</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="653852958849469">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="9591441060282755" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">inventory_array.At(13,0)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set return value" sid="3962381603827165" type="Function">
+                            <param id="0" name="Value">13</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>

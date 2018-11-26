@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2uistate>
+    <!--This is a UI state file - its content describes the user interface settings when the event sheet was last open.
+It is entirely optional and the project will load without it.  If you are placing the project under source control,
+you probably do not want to add any .uistate.xml files to the repository.-->
+    <show-addaction-links>1</show-addaction-links>
+    <scroll-pos>2525</scroll-pos>
+    <conditions-column>444</conditions-column>
+    <actions-namecolumn>189</actions-namecolumn>
+    <condition-namecolumns>
+        <nest>80</nest>
+        <nest>138</nest>
+        <nest>80</nest>
+        <nest>86</nest>
+        <nest>68</nest>
+        <nest>50</nest>
+        <nest>32</nest>
+        <nest>18</nest>
+    </condition-namecolumns>
+    <events>
+        <event collapsed="1" sid="6725394485880144" />
+        <event collapsed="1" sid="7636969505040573" />
+        <event collapsed="1" sid="3131343589638441" />
+        <event collapsed="1" sid="9374268813897637" />
+        <event collapsed="1" sid="8557943507489293" />
+        <event collapsed="1" sid="5378104271563146" />
+        <event collapsed="1" sid="115223621556898" />
+        <event collapsed="1" sid="8431073878358097" />
+        <event collapsed="1" sid="4649857413852783" />
+        <event collapsed="1" sid="9374670288663073" />
+        <event collapsed="1" sid="1015347025682797" />
+        <event collapsed="1" sid="30126382142984" />
+        <event collapsed="1" sid="3065460138240212" />
+        <event collapsed="1" sid="7035360635850109" />
+        <event collapsed="1" sid="6047511436548251" />
+        <event collapsed="1" sid="6746871808649144" />
+        <event collapsed="1" sid="9131530241628463" />
+        <event collapsed="1" sid="273487590644584" />
+        <event collapsed="1" sid="3518767249440051" />
+        <event collapsed="1" sid="1251728796156486" />
+        <event collapsed="1" sid="4738731687265339" />
+        <event collapsed="1" sid="8324652316144764" />
+        <event collapsed="1" sid="5006765701111491" />
+        <event collapsed="1" sid="460122008522641" />
+        <event collapsed="1" sid="4513849491220246" />
+        <event collapsed="1" sid="86542318914475" />
+        <event collapsed="1" sid="2192264051522241" />
+        <event collapsed="1" sid="5023764289835989" />
+        <event collapsed="1" sid="691584359771429" />
+        <event collapsed="1" sid="3072328117352731" />
+        <event collapsed="1" sid="209660846420195" />
+    </events>
+</c2uistate>
