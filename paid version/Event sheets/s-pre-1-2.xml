@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>s-pre-1-2</name>
+    <events>
+        <include>s-pre-gen</include>
+        <comment>Вызываем функцию с общими настройками старта предуровня. Затем настройки группу конктно запускаемого уровня и затем переменные для конкретного уровня</comment>
+        <event-block sid="8828661605683007">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="1940805505280074" type="System" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="8823320774649591">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="2298626252319153" type="System">
+                            <param id="0" name="First value">WindowWidth/WindowHeight</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Second value">1.5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="9" name="Set scale" sid="9737101182813919" type="pre_1_2">
+                            <param id="0" name="Scale">0.8</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="2324120489631904">
+                    <conditions />
+                    <actions>
+                        <action id="0" name="Call function" sid="9404046127791578" type="Function">
+                            <param id="0" name="Name">&quot;pre-start&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                        <action id="-9" name="Set value" sid="9078430812271962" type="System">
+                            <param id="0" name="Variable">giftCount</param>
+                            <param id="1" name="Value">2</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="5904885980495679" type="System">
+                            <param id="0" name="Variable">sublevel</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="3722948830523781" type="System">
+                            <param id="0" name="Group name">&quot;Local_Molly_1_2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="87877007154972" type="System">
+                            <param id="0" name="Group name">&quot;Init_1_2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="7719975424598896" type="System">
+                            <param id="0" name="Group name">&quot;Start-1-2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="5272256680550039" type="System">
+                            <param id="0" name="Group name">&quot;Wolf_1_2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="385896998984939" type="System">
+                            <param id="0" name="Group name">&quot;Cake_1_2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="7487628991474608" type="System">
+                            <param id="0" name="Group name">&quot;GeneralFence&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="9840169181154216" type="System">
+                            <param id="0" name="Group name">&quot;TouchFence No&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4474914275893463" type="System">
+                            <param id="0" name="Group name">&quot;TouchFence Yes&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="3950923591157986" type="System">
+                            <param id="0" name="Group name">&quot;GeneralMeat&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="9524288559784893" type="System">
+                            <param id="0" name="Group name">&quot;Goat_meee&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="9531152184247859" type="System">
+                            <param id="0" name="Group name">&quot;Music-1-2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="8708352525299842" type="System">
+                            <param id="0" name="Group name">&quot;GenHelp-1-2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="2440018977195295" type="System">
+                            <param id="0" name="Group name">&quot;Help_1_2&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="2483440474628571" type="System">
+                            <param id="0" name="Group name">&quot;flawor_1_2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="1522668606489334" type="System">
+                            <param id="0" name="Group name">&quot;Restart_1_2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="728518440961943" type="System">
+                            <param id="0" name="Group name">&quot;Exit_1_2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4137948996595585" type="System">
+                            <param id="0" name="Group name">&quot;Ender_1_2&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="8452068660729509" type="System">
+                            <param id="0" name="Group name">&quot;Guide_Book_1_2&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="94552818949279" type="System">
+                            <param id="0" name="Group name">&quot;Help_drag&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="4" name="Preload" sid="7971388234404114" type="Audio">
+                            <param id="0" name="Audio file">tap_screen_glass</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7256660395144211">
+                    <conditions>
+                        <condition id="6" name="Compare key value (as text)" sid="3616149478054482" type="WebStorage">
+                            <param id="0" name="Key">&quot;level_1_2&quot;</param>
+                            <param id="1" name="Text to compare">&quot;null_bum&quot;</param>
+                            <param id="2" name="Case sensitivity">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="6012673941395866" type="WebStorage">
+                            <param id="0" name="Key">&quot;level_1_2&quot;</param>
+                            <param id="1" name="Value">&quot;null&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>При нажатии на кнопку плей запускаем стандартный сценарий через функцию а затем уже уникальное название уровня для загрузки</comment>
+        <event-block sid="6561773391505934">
+            <conditions>
+                <condition id="3" name="On touched object" sid="9517746612182391" type="Touch">
+                    <param id="0" name="Object">playPreload</param>
+                </condition>
+                <condition id="3" name="Compare frame" sid="639160949986749" type="playPreload">
+                    <param id="0" name="Comparison">0</param>
+                    <param id="1" name="Number">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="2564586874371" type="Function">
+                    <param id="0" name="Name">&quot;tap-start&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+                <action id="-16" name="Wait" sid="8895123240609872" type="System">
+                    <param id="0" name="Seconds">0.2</param>
+                </action>
+                <action id="-2" name="Go to layout" sid="8738548576372628" type="System">
+                    <param id="0" name="Layout">level-1-2</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

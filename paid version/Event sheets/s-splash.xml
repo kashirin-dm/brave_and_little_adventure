@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>s-splash</name>
+    <events>
+        <variable comment="Музыка в меню, если 1 то уже играет" constant="0" name="MainMusic" sid="8484660173050066" static="0" type="number">0</variable>
+        <event-block sid="2860217729814435">
+            <conditions>
+                <condition id="-25" name="On loader layout complete" sid="5272108222115164" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Track View" sid="7467374204832808" type="GoogleAnalyticsWrapper">
+                    <param id="0" name="Screen">&quot;SplashScreen&quot;</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="995291716191130">
+                    <conditions>
+                        <condition id="17" inverted="1" name="Is Logged In" sid="289422340752188" type="CocoonGameCenter" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Request login" sid="560605891719939" type="CocoonGameCenter" />
+                    </actions>
+                </event-block>
+                <comment>если язык установлен то идем сразу в главное меню</comment>
+                <event-block sid="236270170477697">
+                    <conditions>
+                        <condition id="3" name="Local key exists" sid="3562016119306465" type="WebStorage">
+                            <param id="0" name="Key">&quot;lang_locale&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="4485880323549928" type="System">
+                            <param id="0" name="Layout">mainMenu</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Иначе на экран выбора языка</comment>
+                <event-block sid="8275981899510737">
+                    <conditions>
+                        <condition id="3" inverted="1" name="Local key exists" sid="2115661599821939" type="WebStorage">
+                            <param id="0" name="Key">&quot;lang_locale&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="8647157958589572" type="System">
+                            <param id="0" name="Layout">language</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="192383599922503">
+                    <conditions>
+                        <condition id="3" inverted="1" name="Local key exists" sid="3573604487680091" type="WebStorage">
+                            <param id="0" name="Key">&quot;XMAS_COUNT_SAVE&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="9199384365287834" type="WebStorage">
+                            <param id="0" name="Key">&quot;XMAS_COUNT_SAVE&quot;</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>

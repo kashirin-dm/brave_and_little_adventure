@@ -1,0 +1,1291 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>s-global</name>
+    <events>
+        <variable comment="Если 1 то включается анимация рестарта уровня" constant="0" name="Dead" sid="3523233185907674" static="0" type="number">0</variable>
+        <variable comment="Считаем сколько раз сдохли, чтобы включать видеорекламу" constant="0" name="DeadCounter" sid="997058373114052" static="0" type="number">0</variable>
+        <comment></comment>
+        <variable comment="создаёт интервал в 3 секунды" constant="0" name="CAMERA" sid="1040614429055773" static="0" type="number">0</variable>
+        <comment>Панарамирование экрана</comment>
+        <variable comment="ID тача используемого для панорамирования" constant="0" name="TouchPanID" sid="8377030380942911" static="0" type="number">-1</variable>
+        <variable comment="Начальная позиция тача по X (для панорамирования)" constant="0" name="TouchLastX" sid="95164071821581" static="0" type="number">0</variable>
+        <variable comment="Начальная позиция тача по Y (для панорамирования)" constant="0" name="TouchLastY" sid="1200481092287716" static="0" type="number">0</variable>
+        <variable comment="Начальная позиция тача по X (для панорамирования)" constant="0" name="LastMagiCamX" sid="278149277076114" static="0" type="number">0</variable>
+        <variable comment="Начальная позиция тача по Y (для панорамирования)" constant="0" name="LastMagiCamY" sid="916790348051170" static="0" type="number">0</variable>
+        <variable comment="Блокирует камеру в кат сценах" constant="0" name="BlockCAM" sid="3827508513167801" static="0" type="number">0</variable>
+        <variable comment="Количество пирожков собранных на уровне" constant="0" name="Patty_Count" sid="8003059652131264" static="0" type="number">0</variable>
+        <variable comment="Если 1 то мы не добавляем число к StarGift и таким образом больше 1-й точки не получим" constant="0" name="Patty_BLOCK" sid="5897616335497043" static="0" type="number">0</variable>
+        <event-group description="Общие настройки поведения Молли" sid="1081773840917199" title="GlobalMolly">
+            <sub-events>
+                <comment>При старте уровня ставим антитап на позицию плеера и цепляем к нему. Ставим у плеера Скрипт 999 именно при нем не выключается платформер и плеер приземлится на землю.</comment>
+                <event-block sid="6231927832609032">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="6301594566125714" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-20" name="Set layout scale" sid="2339588150827213" type="System">
+                            <param id="0" name="Scale">0.86</param>
+                        </action>
+                        <action id="-8" name="Scroll to object" sid="9737806434200021" type="System">
+                            <param id="0" name="Object">Player</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="9201555599992595" type="AntiTap">
+                            <param id="0" name="X">Player.X</param>
+                            <param id="1" name="Y">Player.Y-80</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" sid="6074009975927113" type="AntiTap">
+                            <param id="0" name="Pin to">Player</param>
+                            <param id="1" name="Mode">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Если плеер взаимодействует с землёй, которая под углом, то если идет или крадется, ставим ей угол земли.</comment>
+                <event-block sid="1508167339097593">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="5969089480830977" type="Player">
+                            <param id="0" name="Object">SolidAngle</param>
+                        </condition>
+                        <condition behavior="Solid" id="0" name="Is enabled" sid="6869790155909566" type="SolidAngle" />
+                        <condition id="-14" name="Compare variable" sid="6125568067370793" type="System">
+                            <param id="0" name="Variable">pause</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block any="1" sid="8381203482340817">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="1346335796505964" type="Player">
+                                    <param id="0" name="Instance variable">Script</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="438191532701809" type="Player">
+                                    <param id="0" name="Instance variable">Script</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">100</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="2882767761805401" type="Player">
+                                    <param id="0" name="Instance variable">Script</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">12</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="6513793284472442" type="Player">
+                                    <param id="0" name="Instance variable">Script</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">14.1</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="7661399062424762" type="Player">
+                                    <param id="0" name="Instance variable">Script</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">14.2</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="7440164879196416" type="Player">
+                                    <param id="0" name="Instance variable">Script</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">14.3</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="73511529164707">
+                                    <conditions>
+                                        <condition id="-6" name="Every X seconds" sid="7738250112403262" type="System">
+                                            <param id="0" name="Interval (seconds)">0.1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-8" name="Set angle" sid="1797722893189952" type="Player">
+                                            <param id="0" name="Angle">SolidAngle.Angle</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Если плеер взаимодействует с обычным солидом, то обнуляем его угол</comment>
+                <event-block sid="8994279302795993">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="2814172406176754" type="Player">
+                            <param id="0" name="Object">Solid</param>
+                        </condition>
+                        <condition behavior="Solid" id="0" name="Is enabled" sid="717276726635958" type="SolidAngle" />
+                        <condition id="-14" name="Compare variable" sid="5076455951049225" type="System">
+                            <param id="0" name="Variable">pause</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block any="1" sid="6554137597295913">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="7777168744697044" type="Player">
+                                    <param id="0" name="Instance variable">Script</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="4151986989166579" type="Player">
+                                    <param id="0" name="Instance variable">Script</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">100</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="6805383549331986" type="Player">
+                                    <param id="0" name="Instance variable">Script</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">12</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="1791576939318696" type="Player">
+                                    <param id="0" name="Instance variable">Script</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">14.1</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="2255732526989237" type="Player">
+                                    <param id="0" name="Instance variable">Script</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">14.2</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="1409895781658457" type="Player">
+                                    <param id="0" name="Instance variable">Script</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">14.3</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="1169241916519586">
+                                    <conditions>
+                                        <condition id="-6" name="Every X seconds" sid="3462626888671799" type="System">
+                                            <param id="0" name="Interval (seconds)">0.3</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-8" name="Set angle" sid="4903950686223896" type="Player">
+                                            <param id="0" name="Angle">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-group description="Группа отключается перед началом уровня, а после нажатия и пропадания черного экрана включается. Сделано для того, чтобы молли не щемала как только мы нажмем кнопку плей" inactive="1" sid="6600758213017661" title="Molly_Move_Block">
+                    <sub-events>
+                        <comment>При нажатии на кнопки управления, если идет или если крадется то меняем переменную направления движения, при условии что жмем на антитап и жмем на кнопку с прозрачностью 20 (доступную для управления)</comment>
+                        <event-block sid="3538353923096217">
+                            <conditions>
+                                <condition id="17" name="On tap object" sid="6848871003461073" type="Touch">
+                                    <param id="0" name="Object">MoveButton</param>
+                                </condition>
+                                <condition id="-10" name="Compare opacity" sid="96150590950924" type="MoveButton">
+                                    <param id="0" name="Comparison">0</param>
+                                    <param id="1" name="Opacity">20</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="4179158495070938" type="System">
+                                    <param id="0" name="Variable">pause</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="2470043126343551" type="System">
+                                    <param id="0" name="Variable">Dead</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                                <condition id="-1" name="Compare X" sid="9583704789899247" type="buttonStart">
+                                    <param id="0" name="Comparison">2</param>
+                                    <param id="1" name="X co-ordinate">-1</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="2455647261263973">
+                                    <conditions>
+                                        <condition id="4" inverted="1" name="Is touching object" sid="2024923879927065" type="Touch">
+                                            <param id="0" name="Object">ui_level</param>
+                                        </condition>
+                                        <condition id="-1" name="Compare X" sid="7909638936470859" type="ui_level">
+                                            <param id="0" name="Comparison">2</param>
+                                            <param id="1" name="X co-ordinate">500</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block any="1" sid="448189981989632">
+                                            <conditions>
+                                                <condition id="-7" name="Compare instance variable" sid="3803081733865395" type="Player">
+                                                    <param id="0" name="Instance variable">Script</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">0</param>
+                                                </condition>
+                                                <condition id="-7" name="Compare instance variable" sid="4463127145115638" type="Player">
+                                                    <param id="0" name="Instance variable">Script</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">100</param>
+                                                </condition>
+                                                <condition id="-7" name="Compare instance variable" sid="6135096036614375" type="Player">
+                                                    <param id="0" name="Instance variable">Script</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">12</param>
+                                                </condition>
+                                                <condition id="-7" name="Compare instance variable" sid="1924155068970604" type="Player">
+                                                    <param id="0" name="Instance variable">Script</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">14.1</param>
+                                                </condition>
+                                                <condition id="-7" name="Compare instance variable" sid="6180381984003475" type="Player">
+                                                    <param id="0" name="Instance variable">Script</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">14.2</param>
+                                                </condition>
+                                                <condition id="-7" name="Compare instance variable" sid="8266617918544713" type="Player">
+                                                    <param id="0" name="Instance variable">Script</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">14.3</param>
+                                                </condition>
+                                                <condition id="-7" name="Compare instance variable" sid="9379127173126587" type="Player">
+                                                    <param id="0" name="Instance variable">Script</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">200</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions />
+                                            <sub-events>
+                                                <event-block sid="8998579432849624">
+                                                    <conditions>
+                                                        <condition id="4" inverted="1" name="Is touching object" sid="861345113118584" type="Touch">
+                                                            <param id="0" name="Object">AntiTap</param>
+                                                        </condition>
+                                                        <condition id="4" inverted="1" name="Is touching object" sid="7262206376812854" type="Touch">
+                                                            <param id="0" name="Object">patty</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="-3" name="Set position" sid="6968832154569619" type="StopMove">
+                                                            <param id="0" name="X">Touch.X(&quot;background&quot;)</param>
+                                                            <param id="1" name="Y">MoveButton.Y</param>
+                                                        </action>
+                                                        <action id="-3" name="Create object" sid="839876586608177" type="System">
+                                                            <param id="0" name="Object to create">Walk_Magic_FX</param>
+                                                            <param id="1" name="Layer">&quot;interact&quot;</param>
+                                                            <param id="2" name="X">Touch.X(&quot;background&quot;)</param>
+                                                            <param id="3" name="Y">Touch.Y(&quot;background&quot;)</param>
+                                                        </action>
+                                                        <action id="-29" name="Move to object" sid="6831896677372148" type="Walk_Magic_FX">
+                                                            <param id="0" name="Where">1</param>
+                                                            <param id="1" name="Object">inter_button</param>
+                                                        </action>
+                                                    </actions>
+                                                    <sub-events>
+                                                        <event-block sid="6650528099105415">
+                                                            <conditions>
+                                                                <condition id="-1" name="Compare X" sid="3154496387740038" type="StopMove">
+                                                                    <param id="0" name="Comparison">4</param>
+                                                                    <param id="1" name="X co-ordinate">Player.X</param>
+                                                                </condition>
+                                                            </conditions>
+                                                            <actions>
+                                                                <action id="-10" name="Set value" sid="6514428582077216" type="Player">
+                                                                    <param id="0" name="Instance variable">MoveState</param>
+                                                                    <param id="1" name="Value">1</param>
+                                                                </action>
+                                                            </actions>
+                                                        </event-block>
+                                                        <event-block sid="8951413650055649">
+                                                            <conditions>
+                                                                <condition id="-1" name="Compare X" sid="2533917786799545" type="StopMove">
+                                                                    <param id="0" name="Comparison">2</param>
+                                                                    <param id="1" name="X co-ordinate">Player.X</param>
+                                                                </condition>
+                                                            </conditions>
+                                                            <actions>
+                                                                <action id="-10" name="Set value" sid="7879429838877782" type="Player">
+                                                                    <param id="0" name="Instance variable">MoveState</param>
+                                                                    <param id="1" name="Value">-1</param>
+                                                                </action>
+                                                            </actions>
+                                                        </event-block>
+                                                    </sub-events>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <comment>Стандартная система управления влево и вправо</comment>
+                <event-block sid="1101653652548552">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="495837815319508" type="Player">
+                            <param id="0" name="Instance variable">MoveState</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">-1</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="3650119701439649" type="System">
+                            <param id="0" name="Variable">pause</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-1" name="Compare X" sid="5239628936196952" type="buttonStart">
+                            <param id="0" name="Comparison">2</param>
+                            <param id="1" name="X co-ordinate">-1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="7295244698085264" type="Player">
+                            <param id="0" name="Control">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="8102770188552935">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="6664719935597577" type="Player">
+                            <param id="0" name="Instance variable">MoveState</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="6414050530493154" type="System">
+                            <param id="0" name="Variable">pause</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-1" name="Compare X" sid="2375090365674882" type="buttonStart">
+                            <param id="0" name="Comparison">2</param>
+                            <param id="1" name="X co-ordinate">-1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="5809720699314217" type="Player">
+                            <param id="0" name="Control">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Если плеер идет, то включаем платформер, если крадется то ставим скорость 100 вместо 170</comment>
+                <event-block any="1" sid="4425599832028552">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="198155201249976" type="Player">
+                            <param id="0" name="Instance variable">MoveState</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="3668820195843939" type="Player">
+                            <param id="0" name="Instance variable">MoveState</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">-1</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="5769345788787246">
+                            <conditions>
+                                <condition id="-4" name="Trigger once while true" sid="1856826105387762" type="System" />
+                                <condition id="-14" name="Compare variable" sid="8385650631172039" type="System">
+                                    <param id="0" name="Variable">pause</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                                <condition id="-1" name="Compare X" sid="4987018106432393" type="buttonStart">
+                                    <param id="0" name="Comparison">2</param>
+                                    <param id="1" name="X co-ordinate">-1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="11" name="Set enabled" sid="8450892672520465" type="Player">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="2139581806963501">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="3746826441389105" type="Player">
+                                            <param id="0" name="Instance variable">Script</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Platform" id="1" name="Set max speed" sid="5781397866997312" type="Player">
+                                            <param id="0" name="Max Speed">170</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="3924808472508591">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="8205773286478339" type="Player">
+                                            <param id="0" name="Instance variable">Script</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">200</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Platform" id="1" name="Set max speed" sid="2354259845179869" type="Player">
+                                            <param id="0" name="Max Speed">60</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block any="1" sid="4611117856211007">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="2019993068288808" type="Player">
+                                            <param id="0" name="Instance variable">Script</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">100</param>
+                                        </condition>
+                                        <condition id="-7" name="Compare instance variable" sid="4753865236587515" type="Player">
+                                            <param id="0" name="Instance variable">Script</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">12</param>
+                                        </condition>
+                                        <condition id="-7" name="Compare instance variable" sid="4479456306738803" type="Player">
+                                            <param id="0" name="Instance variable">Script</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">14.1</param>
+                                        </condition>
+                                        <condition id="-7" name="Compare instance variable" sid="6338702223729863" type="Player">
+                                            <param id="0" name="Instance variable">Script</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">14.2</param>
+                                        </condition>
+                                        <condition id="-7" name="Compare instance variable" sid="5271782844262748" type="Player">
+                                            <param id="0" name="Instance variable">Script</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">14.3</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Platform" id="1" name="Set max speed" sid="4369290840806944" type="Player">
+                                            <param id="0" name="Max Speed">100</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="Управление камерой" sid="1117427242339131" title="Camera">
+            <sub-events>
+                <event-block sid="968480208655071">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="158465128709053" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="100" name="Create local camera" sid="355653050924616" type="MagiCam">
+                            <param id="0" name="Name">&quot;camera&quot;</param>
+                            <param id="1" name="X">Player.X</param>
+                            <param id="2" name="Y">Player.Y-207</param>
+                            <param id="3" name="Scale">0.86</param>
+                            <param id="4" name="Active">1</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="560724484249838" type="System">
+                            <param id="0" name="Variable">LastMagiCamX</param>
+                            <param id="1" name="Value">Player.X</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="411083884160951" type="System">
+                            <param id="0" name="Variable">LastMagiCamY</param>
+                            <param id="1" name="Value">Player.Y-207</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="6839081090792424">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="5837625373008636" type="System">
+                            <param id="0" name="Variable">pause</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="3220150698309932" type="System">
+                            <param id="0" name="Variable">Dead</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-1" name="Compare X" sid="8847072970746691" type="buttonStart">
+                            <param id="0" name="Comparison">3</param>
+                            <param id="1" name="X co-ordinate">-1</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <comment>Если мы свайпим экран, то обнаруживается ускорение и отключается скролл к персонажу на 3 секунды.</comment>
+                        <event-block sid="3153268372616427">
+                            <conditions>
+                                <condition id="7" name="Compare touch speed" sid="3011143528303974" type="Touch">
+                                    <param id="0" name="Touch index">0</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Speed">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="6509505486086927" type="System">
+                                    <param id="0" name="Variable">CAMERA</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="8273956705963032">
+                            <conditions>
+                                <condition id="2" inverted="1" name="Is in touch" sid="3051986018697883" type="Touch" />
+                            </conditions>
+                            <actions>
+                                <action id="-41" name="Wait for signal" sid="2884583822561548" type="System">
+                                    <param id="0" name="Tag">&quot;scroll&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Если движений есть, то включаем скролл</comment>
+                        <event-block sid="190797152478904">
+                            <conditions>
+                                <condition id="7" name="Compare touch speed" sid="7431899104800054" type="Touch">
+                                    <param id="0" name="Touch index">0</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Speed">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="5762406463247228" type="System">
+                                    <param id="0" name="Variable">CAMERA</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="462902666837157">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="6187653612150871" type="System">
+                                    <param id="0" name="Variable">CAMERA</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="9706623614255958">
+                                    <conditions>
+                                        <condition id="2" inverted="1" name="Is in touch" sid="8951243540370638" type="Touch" />
+                                        <condition id="-14" name="Compare variable" sid="4380907065423654" type="System">
+                                            <param id="0" name="Variable">BlockCAM</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                        <condition id="-6" name="Every X seconds" sid="5058062753256809" type="System">
+                                            <param id="0" name="Interval (seconds)">8</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-41" name="Wait for signal" sid="547067188099024" type="System">
+                                            <param id="0" name="Tag">&quot;scroll&quot;</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="6844600645254623" type="System">
+                                            <param id="0" name="Variable">CAMERA</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-group description="Панорамирование экрана" sid="3877895243853514" title="Panning">
+                            <sub-events>
+                                <comment>Если игрок трогает экран, и мы не панорамируем в данный момент, то сохраняем ID и позиции тача. Мы получем положение тача со слоя, с 0-м параллаксом, иначе позиция тача будет менять не относительно экрана и мы получим бесконечный луп позиций. Также мы проверяем, чтобы панарамирования работало только если мы не трогаем объекты UI и если кнопка старт за экраном</comment>
+                                <event-block sid="121343242536646">
+                                    <conditions>
+                                        <condition id="0" name="On any touch start" sid="3690009817706643" type="Touch" />
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="9630310970983135">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="7360313229198902" type="System">
+                                                    <param id="0" name="Variable">TouchPanID</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">-1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions />
+                                            <sub-events>
+                                                <event-block sid="7685838240663341">
+                                                    <conditions>
+                                                        <condition id="4" inverted="1" name="Is touching object" sid="4467927171789105" type="Touch">
+                                                            <param id="0" name="Object">ui_level</param>
+                                                        </condition>
+                                                        <condition id="4" inverted="1" name="Is touching object" sid="524971390508723" type="Touch">
+                                                            <param id="0" name="Object">paper_start</param>
+                                                        </condition>
+                                                        <condition id="4" inverted="1" name="Is touching object" sid="3914451240648134" type="Touch">
+                                                            <param id="0" name="Object">sidebarPause</param>
+                                                        </condition>
+                                                        <condition id="4" inverted="1" name="Is touching object" sid="3370612056586846" type="Touch">
+                                                            <param id="0" name="Object">guide_b</param>
+                                                        </condition>
+                                                        <condition id="4" inverted="1" name="Is touching object" sid="7148286044530281" type="Touch">
+                                                            <param id="0" name="Object">paper_end</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="-9" name="Set value" sid="1217180049666483" type="System">
+                                                            <param id="0" name="Variable">TouchLastX</param>
+                                                            <param id="1" name="Value">Touch.X(&quot;ui&quot;)</param>
+                                                        </action>
+                                                        <action id="-9" name="Set value" sid="3066080660227834" type="System">
+                                                            <param id="0" name="Variable">TouchLastY</param>
+                                                            <param id="1" name="Value">Touch.Y(&quot;ui&quot;)</param>
+                                                        </action>
+                                                        <action id="-9" name="Set value" sid="6934315696976763" type="System">
+                                                            <param id="0" name="Variable">TouchPanID</param>
+                                                            <param id="1" name="Value">Touch.TouchID</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <comment>Когда у нас есть тач, смещаем позицию слоёв с параллаксам согласно положению тача. Здесь мы определям позиции слоя с параллаксом 100, опять же, это работает только если кнопка плей за пределами экрана</comment>
+                                <event-block sid="3027165464688203">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="9657658555152807" type="System">
+                                            <param id="0" name="Variable">TouchPanID</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                        <condition id="-14" name="Compare variable" sid="307515308038006" type="System">
+                                            <param id="0" name="Variable">BlockCAM</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="2334218386697589">
+                                            <conditions>
+                                                <condition id="4" inverted="1" name="Is touching object" sid="8048669504867046" type="Touch">
+                                                    <param id="0" name="Object">ui_level</param>
+                                                </condition>
+                                                <condition id="4" inverted="1" name="Is touching object" sid="793670844108589" type="Touch">
+                                                    <param id="0" name="Object">paper_start</param>
+                                                </condition>
+                                                <condition id="4" inverted="1" name="Is touching object" sid="6610121847674302" type="Touch">
+                                                    <param id="0" name="Object">sidebarPause</param>
+                                                </condition>
+                                                <condition id="4" inverted="1" name="Is touching object" sid="5820895652190724" type="Touch">
+                                                    <param id="0" name="Object">guide_b</param>
+                                                </condition>
+                                                <condition id="4" inverted="1" name="Is touching object" sid="1819758696290908" type="Touch">
+                                                    <param id="0" name="Object">paper_end</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="300" name="Transition to point" sid="714204892055496" type="MagiCam">
+                                                    <param id="0" name="Name">&quot;camera&quot;</param>
+                                                    <param id="1" name="X">scrollx - (Touch.X(&quot;ui&quot;) - TouchLastX) / LayerScale(&quot;background&quot;)</param>
+                                                    <param id="2" name="Y">scrolly - (Touch.Y(&quot;ui&quot;) - TouchLastY) / LayerScale(&quot;background&quot;)</param>
+                                                    <param id="3" name="Duration">0</param>
+                                                </action>
+                                                <action id="-9" name="Set value" sid="5914968749996543" type="System">
+                                                    <param id="0" name="Variable">TouchLastX</param>
+                                                    <param id="1" name="Value">Touch.X(&quot;ui&quot;)</param>
+                                                </action>
+                                                <action id="-9" name="Set value" sid="1430219746620487" type="System">
+                                                    <param id="0" name="Variable">TouchLastY</param>
+                                                    <param id="1" name="Value">Touch.Y(&quot;ui&quot;)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <comment>Когда мы прекращаем панарамирование, тач ID возвращается к исходному значению, чтобы остановить панарамирование.</comment>
+                                <event-block sid="887912991753993">
+                                    <conditions>
+                                        <condition id="1" name="On any touch end" sid="1986830202516125" type="Touch" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="5892472479698326" type="System">
+                                            <param id="0" name="Variable">TouchPanID</param>
+                                            <param id="1" name="Value">-1</param>
+                                        </action>
+                                        <action id="-16" name="Wait" sid="6860312467643496" type="System">
+                                            <param id="0" name="Seconds">8</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="3388850433113579">
+                                            <conditions>
+                                                <condition id="2" inverted="1" name="Is in touch" sid="2335351956670267" type="Touch" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="-42" name="Signal" sid="1044582681299115" type="System">
+                                                    <param id="0" name="Tag">&quot;scroll&quot;</param>
+                                                </action>
+                                                <action id="300" name="Transition to point" sid="771429395285636" type="MagiCam">
+                                                    <param id="0" name="Name">&quot;camera&quot;</param>
+                                                    <param id="1" name="X">LastMagiCamX</param>
+                                                    <param id="2" name="Y">LastMagiCamY</param>
+                                                    <param id="3" name="Duration">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="Сценарии смерти" sid="6163012247440471" title="Dead">
+            <sub-events>
+                <event-block sid="636452055607933">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="3467029003845701" type="System">
+                            <param id="0" name="Variable">Dead</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="-4" name="Trigger once while true" sid="635941932307443" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="16" name="Set Visible" sid="1341632764924519" type="inter_button">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="33" name="Stop all" sid="9256136228122181" type="Audio" />
+                        <action id="0" name="Play" sid="7888625241190374" type="Audio">
+                            <param id="0" name="Audio file">enemy</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">-8</param>
+                            <param id="1" name="Tag (optional)">&quot;game&quot;</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="6492993567652747" type="System">
+                            <param id="0" name="Layer">&quot;circle&quot;</param>
+                            <param id="1" name="Visibility">1</param>
+                        </action>
+                        <action id="-30" name="Set layer effect enabled" sid="6835697293781972" type="System">
+                            <param id="0" name="Layer">&quot;circle&quot;</param>
+                            <param id="1" name="Mode">1</param>
+                            <param id="2" name="Effect">&quot;Multiply&quot;</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="8282100635999039" type="System">
+                            <param id="0" name="Object to create">startCanvas</param>
+                            <param id="1" name="Layer">&quot;circle&quot;</param>
+                            <param id="2" name="X">player.X</param>
+                            <param id="3" name="Y">player.Y -39.5</param>
+                        </action>
+                        <action id="1" name="Set blend mode" sid="9755854164954058" type="startCanvas">
+                            <param id="0" name="Blend mode">8</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="6439704225281408" type="startCanvas">
+                            <param id="0" name="Width">2420</param>
+                            <param id="1" name="Height">2420</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="8770675447741081" type="startCanvas">
+                            <param id="0" name="Instance variable">w</param>
+                            <param id="1" name="Value">2420</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="1466215685566062" type="System">
+                            <param id="0" name="Seconds">0.8</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="5542704718540029" type="System">
+                            <param id="0" name="Group name">&quot;deadCanvas&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="8708134932300854" type="System">
+                            <param id="0" name="Seconds">0.3</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="1494724294002748" type="System">
+                            <param id="0" name="Layer">&quot;ui&quot;</param>
+                            <param id="1" name="Visibility">0</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="4387062868242246" type="System">
+                            <param id="0" name="Seconds">0.2</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="5093227588909548" type="System">
+                            <param id="0" name="Group name">&quot;deadCanvas&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="2758187459990755" type="System">
+                            <param id="0" name="Seconds">1.5</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="8238699255151063" type="System">
+                            <param id="0" name="Group name">&quot;deadCanvas&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="3693364340993129" type="System">
+                            <param id="0" name="Seconds">0.25</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="5548916633490605" type="System">
+                            <param id="0" name="Group name">&quot;deadCanvas&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="4031196399097597" type="startCanvas">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="8764633218377352" type="System">
+                            <param id="0" name="Seconds">2</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="1037922854819174" type="startCanvas">
+                            <param id="0" name="X">player.X</param>
+                            <param id="1" name="Y">player.Y -39.5</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="6446318403937614" type="startCanvas">
+                            <param id="0" name="Width">0</param>
+                            <param id="1" name="Height">0</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="6871571829705092" type="startCanvas">
+                            <param id="0" name="Instance variable">w</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="3211013748709165" type="startCanvas">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="2696686559123546" type="System">
+                            <param id="0" name="Group name">&quot;deadCanvasStart&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="3027006138189929" type="System">
+                            <param id="0" name="Seconds">0.12</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="3798838915282987" type="System">
+                            <param id="0" name="Group name">&quot;deadCanvasStart&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="2730195900404833" type="System">
+                            <param id="0" name="Seconds">0.5</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="6165229019208329" type="System">
+                            <param id="0" name="Group name">&quot;deadCanvasStartFin&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="3370024583262931" type="System">
+                            <param id="0" name="Layer">&quot;ui&quot;</param>
+                            <param id="1" name="Visibility">1</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="3015158804467588" type="System">
+                            <param id="0" name="Variable">TouchLastX</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="1880444893895925" type="System">
+                            <param id="0" name="Variable">TouchLastY</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="1763205880392823" type="System">
+                            <param id="0" name="Variable">TouchPanID</param>
+                            <param id="1" name="Value">-1</param>
+                        </action>
+                        <action id="16" name="Set Visible" sid="7806652033392855" type="inter_button">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="6128608592716981" type="System">
+                            <param id="0" name="Variable">Dead</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7572110650242081">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="6624547411357834" type="System">
+                            <param id="0" name="Variable">Dead</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">2</param>
+                        </condition>
+                        <condition id="-4" name="Trigger once while true" sid="4817615960430362" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="16" name="Set Visible" sid="8924162601237616" type="inter_button">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="33" name="Stop all" sid="4131654551224884" type="Audio" />
+                        <action id="0" name="Play" sid="9928237757780998" type="Audio">
+                            <param id="0" name="Audio file">enemy</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">-8</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="8061430777696359" type="System">
+                            <param id="0" name="Object to create">black_tile</param>
+                            <param id="1" name="Layer">&quot;ui&quot;</param>
+                            <param id="2" name="X">ViewportLeft(&quot;ui&quot;)-300</param>
+                            <param id="3" name="Y">ViewportTop(&quot;ui&quot;)-300</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="877776987645375" type="black_tile">
+                            <param id="0" name="Width">ViewportRight(&quot;ui&quot;)+500</param>
+                            <param id="1" name="Height">ViewportBottom(&quot;ui&quot;)+500</param>
+                        </action>
+                        <action behavior="FadeIN" id="1" name="Start fade" sid="4502885919742244" type="black_tile" />
+                        <action id="-16" name="Wait" sid="9596641506943444" type="System">
+                            <param id="0" name="Seconds">4.68</param>
+                        </action>
+                        <action id="16" name="Set Visible" sid="3061280318799969" type="inter_button">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="5501428276811144" type="System">
+                            <param id="0" name="Variable">TouchLastX</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="2724713308556796" type="System">
+                            <param id="0" name="Variable">TouchLastY</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="1812739857894145" type="System">
+                            <param id="0" name="Variable">TouchPanID</param>
+                            <param id="1" name="Value">-1</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="9828663607159777" type="black_tile" />
+                        <action id="-9" name="Set value" sid="7538656075538724" type="System">
+                            <param id="0" name="Variable">Dead</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-group description="Уменьшаем круг до размера Молли" inactive="1" sid="1094230826452514" title="deadCanvas">
+                    <sub-events>
+                        <event-block sid="6103328050971658">
+                            <conditions>
+                                <condition id="-1" name="Every tick" sid="8456778684725894" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-12" name="Subtract from" sid="2386606202776401" type="startCanvas">
+                                    <param id="0" name="Instance variable">w</param>
+                                    <param id="1" name="Value">53</param>
+                                </action>
+                                <action id="-7" name="Set size" sid="2565889231060086" type="startCanvas">
+                                    <param id="0" name="Width">startCanvas.w</param>
+                                    <param id="1" name="Height">startCanvas.w</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="Немножечно увеличиваем размер Круглешка показывающего Молли" inactive="1" sid="8314810962667044" title="deadCanvasStart">
+                    <sub-events>
+                        <event-block sid="6103328050971658">
+                            <conditions>
+                                <condition id="-1" name="Every tick" sid="8456778684725894" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Add to" sid="2386606202776401" type="startCanvas">
+                                    <param id="0" name="Instance variable">w</param>
+                                    <param id="1" name="Value">15</param>
+                                </action>
+                                <action id="-7" name="Set size" sid="2565889231060086" type="startCanvas">
+                                    <param id="0" name="Width">startCanvas.w</param>
+                                    <param id="1" name="Height">startCanvas.w</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="Быстро увеличивает круг пока не откроет весь экран (размер определяеться по системному значению) а затем полностью уничтожает круг и расставляем игровое UI" inactive="1" sid="2220122145885338" title="deadCanvasStartFin">
+                    <sub-events>
+                        <event-block sid="6103328050971658">
+                            <conditions>
+                                <condition id="-1" name="Every tick" sid="8456778684725894" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Add to" sid="2386606202776401" type="startCanvas">
+                                    <param id="0" name="Instance variable">w</param>
+                                    <param id="1" name="Value">100</param>
+                                </action>
+                                <action id="-7" name="Set size" sid="2565889231060086" type="startCanvas">
+                                    <param id="0" name="Width">startCanvas.w</param>
+                                    <param id="1" name="Height">startCanvas.w</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="3443863592653436">
+                            <conditions>
+                                <condition id="-5" name="Compare width" sid="4681104869821123" type="startCanvas">
+                                    <param id="0" name="Comparison">5</param>
+                                    <param id="1" name="Width">WindowWidth+500</param>
+                                </condition>
+                                <condition id="-4" name="Trigger once while true" sid="3882364264412045" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="6606772007133596" type="startCanvas" />
+                                <action id="-4" name="Set layer visible" sid="9566459006420373" type="System">
+                                    <param id="0" name="Layer">&quot;circle&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                                <action id="-30" name="Set layer effect enabled" sid="6633155865957677" type="System">
+                                    <param id="0" name="Layer">&quot;circle&quot;</param>
+                                    <param id="1" name="Mode">0</param>
+                                    <param id="2" name="Effect">&quot;Multiply&quot;</param>
+                                </action>
+                                <action id="-12" name="Set group active" sid="263114771037758" type="System">
+                                    <param id="0" name="Group name">&quot;deadCanvasStartFin&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+            </sub-events>
+        </event-group>
+        <event-block sid="8363095427998883">
+            <conditions>
+                <condition id="0" name="On function" sid="600516241567936" type="Function">
+                    <param id="0" name="Name">&quot;call_m_script&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Set value" sid="641361131361403" type="Player">
+                    <param id="0" name="Instance variable">MoveState</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-3" name="Set position" sid="810155769128187" type="StopMove">
+                    <param id="0" name="X">0</param>
+                    <param id="1" name="Y">0</param>
+                </action>
+                <action behavior="Platform" id="11" name="Set enabled" sid="7125452621823075" type="Player">
+                    <param id="0" name="State">0</param>
+                </action>
+                <action behavior="MoveTo" id="0" name="Set enabled" sid="9473466412985472" type="Player">
+                    <param id="0" name="State">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-group description="Интерактивные кнопки" sid="7415279270339482" title="Buttons">
+            <sub-events>
+                <event-block sid="9940751039384666">
+                    <conditions>
+                        <condition id="17" name="On tap object" sid="849673149952601" type="Touch">
+                            <param id="0" name="Object">stormborn</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="6597890315423948" type="System">
+                            <param id="0" name="Variable">pause</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="8914979403110465" type="System">
+                            <param id="0" name="Variable">Dead</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set animation" sid="1326485717027365" type="inter_button">
+                            <param id="0" name="Animation">&quot;close&quot;</param>
+                            <param id="1" name="Where to start playing this animation">0</param>
+                            <param id="2" name="Blend Duration">0</param>
+                        </action>
+                        <action id="3" name="Start" sid="7869580628745248" type="touch_circle">
+                            <param id="0" name="From">1</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="7775977279919901" type="System">
+                            <param id="0" name="Seconds">0.1</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="2987804213933284" type="inter_button">
+                            <param id="0" name="X">-500</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="807829981130823" type="touch_circle">
+                            <param id="0" name="X">-400</param>
+                            <param id="1" name="Y">0</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="119077380434639" type="stormborn">
+                            <param id="0" name="X">-800</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3192006875848268">
+                    <conditions>
+                        <condition id="0" name="On animation finished" sid="5139112389949793" type="inter_button">
+                            <param id="0" name="Animation">&quot;close&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Wait" sid="1564121238417623" type="System">
+                            <param id="0" name="Seconds">0.1</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="5031985220194249" type="inter_button">
+                            <param id="0" name="X">-500</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="5226501818154726" type="touch_circle">
+                            <param id="0" name="X">-400</param>
+                            <param id="1" name="Y">0</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="698046937651068" type="stormborn">
+                            <param id="0" name="X">-800</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="379689866184211">
+                    <conditions>
+                        <condition id="0" name="On animation finished" sid="456248258087875" type="inter_button">
+                            <param id="0" name="Animation">&quot;top_open&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Set position" sid="640820334121454" type="stormborn">
+                            <param id="0" name="X">inter_button.X</param>
+                            <param id="1" name="Y">inter_button.Y-66</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="975470695469116">
+                    <conditions>
+                        <condition id="0" name="On animation finished" sid="558431207140626" type="inter_button">
+                            <param id="0" name="Animation">&quot;left_open&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Set position" sid="617951268711640" type="stormborn">
+                            <param id="0" name="X">inter_button.X-66</param>
+                            <param id="1" name="Y">inter_button.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="369696855240471">
+                    <conditions>
+                        <condition id="0" name="On animation finished" sid="931760782415003" type="inter_button">
+                            <param id="0" name="Animation">&quot;right_open&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Set position" sid="109034216277578" type="stormborn">
+                            <param id="0" name="X">inter_button.X+66</param>
+                            <param id="1" name="Y">inter_button.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="793232523923148">
+                    <conditions>
+                        <condition id="0" name="On animation finished" sid="541011187212509" type="inter_button">
+                            <param id="0" name="Animation">&quot;bott_open&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Set position" sid="330259486986742" type="stormborn">
+                            <param id="0" name="X">inter_button.X</param>
+                            <param id="1" name="Y">inter_button.Y+66</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="258980440845603">
+                    <conditions>
+                        <condition id="0" name="On animation finished" sid="170308761690596" type="inter_button">
+                            <param id="0" name="Animation">&quot;right_top_open&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Set position" sid="677099377134482" type="stormborn">
+                            <param id="0" name="X">inter_button.X+47</param>
+                            <param id="1" name="Y">inter_button.Y-47</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="189122579829030">
+                    <conditions>
+                        <condition id="0" name="On animation finished" sid="448471779344559" type="inter_button">
+                            <param id="0" name="Animation">&quot;right_bott_open&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Set position" sid="236385999331536" type="stormborn">
+                            <param id="0" name="X">inter_button.X+47</param>
+                            <param id="1" name="Y">inter_button.Y+47</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="966070623718857">
+                    <conditions>
+                        <condition id="0" name="On animation finished" sid="159986803960003" type="inter_button">
+                            <param id="0" name="Animation">&quot;left_bott_open&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Set position" sid="740284941904199" type="stormborn">
+                            <param id="0" name="X">inter_button.X-47</param>
+                            <param id="1" name="Y">inter_button.Y+47</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="493118864083833">
+                    <conditions>
+                        <condition id="0" name="On animation finished" sid="284081693844489" type="inter_button">
+                            <param id="0" name="Animation">&quot;left_top_open&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Set position" sid="447381326024199" type="stormborn">
+                            <param id="0" name="X">inter_button.X-47</param>
+                            <param id="1" name="Y">inter_button.Y-47</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="Механизм нажатия на пирожок" sid="3336186080171343" title="PATTY">
+            <sub-events>
+                <comment>Тап на маленькую конфету</comment>
+                <event-block sid="6459726389142862">
+                    <conditions>
+                        <condition id="3" name="On touched object" sid="1091714401458665" type="Touch">
+                            <param id="0" name="Object">patty</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="9148399397180081" type="System">
+                            <param id="0" name="Variable">pause</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="921073158846462" type="System">
+                            <param id="0" name="Variable">ui_block</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="1602063023206974" type="System">
+                            <param id="0" name="Variable">Dead</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-9" name="Is visible" sid="8715845827144809" type="ui_level" />
+                        <condition id="-1" name="Compare X" sid="373601824847535" type="buttonStart">
+                            <param id="0" name="Comparison">2</param>
+                            <param id="1" name="X co-ordinate">-1</param>
+                        </condition>
+                        <condition id="-9" name="Is visible" sid="1915571074629053" type="patty" />
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="2621829934823555" type="patty">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="9091512877664915" type="System">
+                            <param id="0" name="Object to create">chapter_boom</param>
+                            <param id="1" name="Layer">&quot;game&quot;</param>
+                            <param id="2" name="X">patty.X</param>
+                            <param id="3" name="Y">patty.Y+15</param>
+                        </action>
+                        <action id="9" name="Set scale" sid="5348957434638662" type="chapter_boom">
+                            <param id="0" name="Scale">0.5</param>
+                        </action>
+                        <action id="6" name="Set speed" sid="3367163247390114" type="chapter_boom">
+                            <param id="0" name="Speed">80</param>
+                        </action>
+                        <action id="0" name="Play" sid="6063802150028548" type="Audio">
+                            <param id="0" name="Audio file">tap_patty</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;game&quot;</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="1047653170606685" type="System">
+                            <param id="0" name="Seconds">0.1</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="6241592582119141" type="System">
+                            <param id="0" name="Variable">Patty_Count</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="5053580966621809" type="patty" />
+                    </actions>
+                </event-block>
+                <comment>Когда при нажатии на конфету происходит взрыв, то по окончанию анимации обязательно уничтожаем</comment>
+                <event-block sid="8123245834308275">
+                    <conditions>
+                        <condition id="5" name="On any finished" sid="4096086602346113" type="chapter_boom" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="7859441926436395" type="chapter_boom" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>

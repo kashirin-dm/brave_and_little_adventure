@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>s-pre-4-1</name>
+    <events>
+        <include>s-pre-gen</include>
+        <comment></comment>
+        <comment>Вызываем функцию с общими настройками старта предуровня. Затем настройки группу конктно запускаемого уровня и затем переменные для конкретного уровня</comment>
+        <event-block sid="6208963792921047">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="9394367316275996" type="System" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <comment>Хранилище &quot;gans_4_1&quot; если старт то никак не влияет и ганс возле молли при старте уровня, если &quot;onfire&quot;, то сидит возле костра, если &quot;2floor&quot; то на втором этаже</comment>
+                <comment>Хранилище &quot;torch_4_1&quot; если старт то никак не влияет, если &quot;taked&quot; то при выходе из дома он будет в инвентаре, если &quot;onfire&quot; то горит</comment>
+                <comment>Хранилище &quot;fireplase_4_1&quot; если &quot;off&quot; то камин не горит, если &quot;on&quot; то горит</comment>
+                <comment>Хранилище &quot;canister_4_1&quot; если &quot;start&quot; то канистра на полку у потолка, ничего не происходит, если &quot;onfloor&quot; то лежит на полу, если &quot;empty&quot; то взяли но пустая, если &quot;full&quot; то уже наполнили, если &quot;destroy&quot; то уже использовали</comment>
+                <comment>Хранилище &quot;cache&quot; если &quot;off&quot; то плитку подарка не отодвинули, если &quot;on&quot; то отодвинули</comment>
+                <comment>Хранилище &quot;ufo&quot; если &quot;free&quot; то подарок не брали, если &quot;taked&quot; то уже взяли</comment>
+                <event-block sid="3883067120288703">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="7833403883735661" type="System">
+                            <param id="0" name="First value">WindowWidth/WindowHeight</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Second value">1.5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="9" name="Set scale" sid="6493307757266547" type="pre_4_1">
+                            <param id="0" name="Scale">0.8</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block bookmark="1" sid="4337514274981251">
+                    <conditions />
+                    <actions>
+                        <action id="0" name="Call function" sid="8476667734806109" type="Function">
+                            <param id="0" name="Name">&quot;pre-start&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                        <action id="-9" name="Set value" sid="2104778313356989" type="System">
+                            <param id="0" name="Variable">giftCount</param>
+                            <param id="1" name="Value">3</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="6857503229311082" type="System">
+                            <param id="0" name="Variable">sublevel</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="281622437696931" type="System">
+                            <param id="0" name="Variable">glove</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="0" name="Set local value" sid="2973261718139198" type="WebStorage">
+                            <param id="0" name="Key">&quot;gans_4_1&quot;</param>
+                            <param id="1" name="Value">&quot;start&quot;</param>
+                        </action>
+                        <action id="0" name="Set local value" sid="5457678528674741" type="WebStorage">
+                            <param id="0" name="Key">&quot;torch_4_1&quot;</param>
+                            <param id="1" name="Value">&quot;start&quot;</param>
+                        </action>
+                        <action id="0" name="Set local value" sid="828340069208953" type="WebStorage">
+                            <param id="0" name="Key">&quot;fireplase_4_1&quot;</param>
+                            <param id="1" name="Value">&quot;off&quot;</param>
+                        </action>
+                        <action id="0" name="Set local value" sid="7365169292821416" type="WebStorage">
+                            <param id="0" name="Key">&quot;canister_4_1&quot;</param>
+                            <param id="1" name="Value">&quot;start&quot;</param>
+                        </action>
+                        <action id="0" name="Set local value" sid="3700605572559867" type="WebStorage">
+                            <param id="0" name="Key">&quot;cache&quot;</param>
+                            <param id="1" name="Value">&quot;off&quot;</param>
+                        </action>
+                        <action id="0" name="Set local value" sid="2641766630496544" type="WebStorage">
+                            <param id="0" name="Key">&quot;ufo&quot;</param>
+                            <param id="1" name="Value">&quot;free&quot;</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="8479635963220211" type="System">
+                            <param id="0" name="Group name">&quot;Local_Molly_4_1_1&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="861992349872457" type="System">
+                            <param id="0" name="Group name">&quot;Init_4_1_1&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="6330447907683224" type="System">
+                            <param id="0" name="Group name">&quot;Start-4-1&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="818386982114535" type="System">
+                            <param id="0" name="Group name">&quot;Start-4-1-portal&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="9087916065921464" type="System">
+                            <param id="0" name="Group name">&quot;gans_4-1&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4728655085239099" type="System">
+                            <param id="0" name="Group name">&quot;Meat_4-1-1&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="1502758775348632" type="System">
+                            <param id="0" name="Group name">&quot;dog_4-1&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="7297911518483658" type="System">
+                            <param id="0" name="Group name">&quot;dog_give_meat&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="3145461801137995" type="System">
+                            <param id="0" name="Group name">&quot;takes the shovel&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4593426870765223" type="System">
+                            <param id="0" name="Group name">&quot;DOOR_4_1_1&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4915382003502914" type="System">
+                            <param id="0" name="Group name">&quot;dprnm torch&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="5009597505874976" type="System">
+                            <param id="0" name="Group name">&quot;ignite the torch&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="305515498008383" type="System">
+                            <param id="0" name="Group name">&quot;first_fire2&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="8898708740444278" type="System">
+                            <param id="0" name="Group name">&quot;lift_engine&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="6508242501130047" type="System">
+                            <param id="0" name="Group name">&quot;melting ice&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="3984726233649124" type="System">
+                            <param id="0" name="Group name">&quot;melt_fire_4_1_1&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="7163579408013342" type="System">
+                            <param id="0" name="Group name">&quot;Lift_4_1_1&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="8139011223341588" type="System">
+                            <param id="0" name="Group name">&quot;lift_move&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="467713639009638" type="System">
+                            <param id="0" name="Group name">&quot;wolf_4_1_1&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="7041581312698211" type="System">
+                            <param id="0" name="Group name">&quot;bird_4_1-1&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4185929795103775" type="System">
+                            <param id="0" name="Group name">&quot;bird_FX&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="262954531347174" type="System">
+                            <param id="0" name="Group name">&quot;take_glove&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="7751696765941626" type="System">
+                            <param id="0" name="Group name">&quot;restart4-1&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4471480808686024" type="System">
+                            <param id="0" name="Group name">&quot;Music-4_1&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="5314506602892675" type="System">
+                            <param id="0" name="Group name">&quot;flawor_4_1_1&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="3018617585843846" type="System">
+                            <param id="0" name="Group name">&quot;Boke_Snow_4_1_1&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="244487049456149" type="System">
+                            <param id="0" name="Group name">&quot;Guide_Book_4_1&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="7257659537350103" type="System">
+                            <param id="0" name="Group name">&quot;Ender_4_1&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4768744357741968" type="System">
+                            <param id="0" name="Group name">&quot;exit_fire2&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="6966892812345707" type="System">
+                            <param id="0" name="Group name">&quot;Rate_App_4_1&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="2283014384652749" type="System">
+                            <param id="0" name="Group name">&quot;Start-4-1-2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="9520312061388551" type="System">
+                            <param id="0" name="Group name">&quot;Local_Molly_4_1_2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="5006716407538708" type="System">
+                            <param id="0" name="Group name">&quot;Exit_4_1_2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="3695488701987256" type="System">
+                            <param id="0" name="Group name">&quot;Fireplace&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="1150935661229535" type="System">
+                            <param id="0" name="Group name">&quot;first_fire_4_1_2&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="8429346008457211" type="System">
+                            <param id="0" name="Group name">&quot;canister&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="9947796646253625" type="System">
+                            <param id="0" name="Group name">&quot;oil tank&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="229204946286693" type="System">
+                            <param id="0" name="Group name">&quot;gift_4_1_2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="618901002003547" type="System">
+                            <param id="0" name="Group name">&quot;take_gift_4_1_2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="9803491933287391" type="System">
+                            <param id="0" name="Group name">&quot;flawor_4_1_2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="6584794830947205" type="System">
+                            <param id="0" name="Group name">&quot;Guide_Book_4_1_2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="9342582512645658" type="System">
+                            <param id="0" name="Group name">&quot;Music-4_1_2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="8932679475807835" type="System">
+                            <param id="0" name="Group name">&quot;restart4-1-2&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="2" name="Remove local value" sid="7324222696371305" type="WebStorage">
+                            <param id="0" name="Key">&quot;patty_4_1_1_destr&quot;</param>
+                        </action>
+                        <action id="2" name="Remove local value" sid="2312440891988853" type="WebStorage">
+                            <param id="0" name="Key">&quot;patty_4_1_2_destr&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="9786194399883591">
+                    <conditions>
+                        <condition id="6" name="Compare key value (as text)" sid="1920364286134666" type="WebStorage">
+                            <param id="0" name="Key">&quot;level_4_1&quot;</param>
+                            <param id="1" name="Text to compare">&quot;null_bum&quot;</param>
+                            <param id="2" name="Case sensitivity">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="5465622062332051" type="WebStorage">
+                            <param id="0" name="Key">&quot;level_4_1&quot;</param>
+                            <param id="1" name="Value">&quot;null&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Хранилище &quot;bird_4_1&quot; если &quot;snow_vis&quot; то не тапали, если &quot;snow_fall&quot; то снег уже сбросили, если &quot;bird_fly&quot; то птица улетела, если &quot;glove_vis&quot; то перчатки сбросили, если &quot;glove_taked&quot; то перчатки взяли уже.</comment>
+                <comment>Хранилище &quot;bird_4_1&quot; Используется на всех уровнях для того чтоб молли могла везде носить перчатки</comment>
+                <comment>Если перчатки взяли, то переменная не сбрасывается, так-как молли может ходить в перчатках на всех снежных уровнях и даже на этом</comment>
+                <event-block bookmark="1" sid="3028315429833648">
+                    <conditions>
+                        <condition id="6" inverted="1" name="Compare key value (as text)" sid="6305835956293723" type="WebStorage">
+                            <param id="0" name="Key">&quot;bird_4_1&quot;</param>
+                            <param id="1" name="Text to compare">&quot;glove_taked&quot;</param>
+                            <param id="2" name="Case sensitivity">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="2216927394396998" type="WebStorage">
+                            <param id="0" name="Key">&quot;bird_4_1&quot;</param>
+                            <param id="1" name="Value">&quot;snow_vis&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>При нажатии на кнопку плей запускаем стандартный сценарий через функцию а затем уже уникальное название уровня для загрузки. Ждем 0.16 сек, чтобы успела сработать функция, так-как там тоже есть wait</comment>
+        <event-block sid="7858379415190166">
+            <conditions>
+                <condition id="3" name="On touched object" sid="3331152580695403" type="Touch">
+                    <param id="0" name="Object">playPreload</param>
+                </condition>
+                <condition id="3" name="Compare frame" sid="2256126039362948" type="playPreload">
+                    <param id="0" name="Comparison">0</param>
+                    <param id="1" name="Number">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="9960878480295836" type="Function">
+                    <param id="0" name="Name">&quot;tap-start&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+                <action id="-16" name="Wait" sid="5389691755602865" type="System">
+                    <param id="0" name="Seconds">0.2</param>
+                </action>
+                <action id="-2" name="Go to layout" sid="6206901043586937" type="System">
+                    <param id="0" name="Layout">level-4-1-1</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
