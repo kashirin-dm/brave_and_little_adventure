@@ -1,5 +1,5 @@
 # Brave & Little Quest Adventure
-## Not for commercial use
+## Not for commercial use, for personal use only
 These are the source files for HTML5 + Cordova game for mobile devices.
 The game was created using the game engine Construct 2 and Cocoon.io
 There are two versions of the game, paid and free.
